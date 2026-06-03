@@ -109,19 +109,18 @@ export default function AssignmentOutput() {
         <div className="p-8 md:p-12">
           {/* School Header */}
           <div className="text-center border-b border-[#E5E7EB] pb-6 mb-6">
-            <h1 className="text-lg md:text-xl font-bold text-[#1A1A1A]">
+            <h1 className="text-lg md:text-xl font-bold text-[#1A1A1A] break-words">
               {schoolName}, {schoolCity}
             </h1>
-            <p className="text-sm text-[#1A1A1A] mt-1">
+            <p className="text-sm text-[#1A1A1A] mt-1 font-medium">
               Subject: {currentAssignment.title}
             </p>
-            <p className="text-sm text-[#1A1A1A]">Class: ____________________</p>
           </div>
 
           {/* Time & Marks Row */}
-          <div className="flex justify-between items-center mb-4 text-sm text-[#1A1A1A]">
-            <span>Time Allowed: 45 minutes</span>
-            <span>Maximum Marks: {currentAssignment.totalMarks}</span>
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 mb-4 text-sm text-[#1A1A1A]">
+            <span><strong>Time Allowed:</strong> 45 minutes</span>
+            <span><strong>Maximum Marks:</strong> {currentAssignment.totalMarks}</span>
           </div>
 
           {/* Instructions */}
@@ -129,11 +128,24 @@ export default function AssignmentOutput() {
             All questions are compulsory unless stated otherwise.
           </p>
 
-          {/* Student Info */}
-          <div className="mb-8 space-y-1.5 text-sm text-[#1A1A1A]">
-            <p>Name: ____________________</p>
-            <p>Roll Number: ____________________</p>
-            <p>Class: ____________________ Section: ________</p>
+          {/* Student Info Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8 text-sm text-[#1A1A1A]">
+            <div className="flex items-end gap-2">
+              <span className="whitespace-nowrap font-medium text-gray-700">Student Name:</span>
+              <div className="flex-1 border-b border-gray-300 min-h-[20px]" />
+            </div>
+            <div className="flex items-end gap-2">
+              <span className="whitespace-nowrap font-medium text-gray-700">Roll Number:</span>
+              <div className="flex-1 border-b border-gray-300 min-h-[20px]" />
+            </div>
+            <div className="flex items-end gap-2">
+              <span className="whitespace-nowrap font-medium text-gray-700">Class:</span>
+              <div className="flex-1 border-b border-gray-300 min-h-[20px]" />
+            </div>
+            <div className="flex items-end gap-2">
+              <span className="whitespace-nowrap font-medium text-gray-700">Section:</span>
+              <div className="flex-1 border-b border-gray-300 min-h-[20px]" />
+            </div>
           </div>
 
           {/* Sections */}
