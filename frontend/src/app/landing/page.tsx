@@ -8,33 +8,15 @@ export default function LandingPage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollPos =
-        window.scrollY ||
-        document.documentElement.scrollTop ||
-        document.body.scrollTop ||
-        0;
-      setScrolled(scrollPos > 10);
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    document.addEventListener('scroll', handleScroll, { passive: true });
-    
-    // Call immediately to set initial state
-    handleScroll();
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      document.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
   return (
-    <div className="min-h-screen w-full flex-1 bg-[#FDFDFD] text-[#1A1A1A] overflow-x-hidden" style={{ fontFamily: "'Inter', 'Figtree', sans-serif" }}>
+    <div 
+      className="h-screen w-full flex-1 bg-[#FDFDFD] text-[#1A1A1A] overflow-x-hidden overflow-y-auto" 
+      style={{ fontFamily: "'Inter', 'Figtree', sans-serif" }}
+      onScroll={(e) => setScrolled(e.currentTarget.scrollTop > 10)}
+    >
       {/* ═══ NAVBAR ═══ */}
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        className={`sticky top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled ? 'bg-white/90 backdrop-blur-md border-b border-gray-100 shadow-sm' : 'bg-transparent'
         }`}
       >
