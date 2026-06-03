@@ -30,9 +30,13 @@ export default function Sidebar() {
     schoolPic: '',
     profilePic: ''
   });
-  const [counts, setCounts] = useState<{ assignments: number | null; library: number | null }>({
-    assignments: null,
-    library: null
+  const [counts, setCounts] = useState<{ assignments: number; library: number }>({
+    assignments: 0,
+    library: 0
+  });
+  const [lastSeen, setLastSeen] = useState<{ assignments: number; library: number }>({
+    assignments: 0,
+    library: 0
   });
 
   useEffect(() => {
@@ -54,26 +58,54 @@ export default function Sidebar() {
           const data = await res.json();
           const items = Array.isArray(data) ? data : data.assignments || [];
           const completed = items.filter((a: any) => a.status === 'completed').length;
+          
           setCounts({
             assignments: items.length,
             library: completed
           });
+
+          // Auto-mark seen if currently on the page during fetch
+          if (pathname === '/') {
+            localStorage.setItem('vedaai_last_seen_assignments', items.length.toString());
+            setLastSeen(prev => ({ ...prev, assignments: items.length }));
+          }
+          if (pathname === '/library') {
+            localStorage.setItem('vedaai_last_seen_library', completed.toString());
+            setLastSeen(prev => ({ ...prev, library: completed }));
+          }
         }
       } catch (err) {
         console.error('Failed to fetch counts:', err);
       }
     };
+
+    // Load last seen count cache
+    setLastSeen({
+      assignments: parseInt(localStorage.getItem('vedaai_last_seen_assignments') || '0', 10),
+      library: parseInt(localStorage.getItem('vedaai_last_seen_library') || '0', 10)
+    });
     
     loadProfileData();
     fetchCounts();
     window.addEventListener('settings-updated', loadProfileData);
-    // Also trigger refetching count when assignments change
     window.addEventListener('assignments-changed', fetchCounts);
     return () => {
       window.removeEventListener('settings-updated', loadProfileData);
       window.removeEventListener('assignments-changed', fetchCounts);
     };
-  }, []);
+  }, [pathname]);
+
+  // Handle path transitions to clear seen states
+  useEffect(() => {
+    if (counts.assignments > 0 && pathname === '/') {
+      localStorage.setItem('vedaai_last_seen_assignments', counts.assignments.toString());
+      setLastSeen(prev => ({ ...prev, assignments: counts.assignments }));
+    }
+    if (counts.library > 0 && pathname === '/library') {
+      localStorage.setItem('vedaai_last_seen_library', counts.library.toString());
+      setLastSeen(prev => ({ ...prev, library: counts.library }));
+    }
+  }, [pathname, counts]);
 
   return (
     <aside className="hidden lg:flex flex-col w-[230px] min-h-screen bg-white border-r border-[#E5E7EB] px-4 py-5 justify-between shrink-0">
@@ -101,9 +133,16 @@ export default function Sidebar() {
               pathname === item.href ||
               (item.href === '/' && pathname === '/');
             
-            const badgeValue = 
+            const totalCount = 
               item.label === 'Assignments' ? counts.assignments :
-              item.label === 'My Library' ? counts.library : null;
+              item.label === 'My Library' ? counts.library : 0;
+
+            const seenCount = 
+              item.label === 'Assignments' ? lastSeen.assignments :
+              item.label === 'My Library' ? lastSeen.library : 0;
+
+            // Only show unread badge delta, ignore if active page
+            const badgeValue = isActive ? 0 : Math.max(0, totalCount - seenCount);
 
             return (
               <Link
@@ -117,7 +156,7 @@ export default function Sidebar() {
               >
                 <item.icon className="w-[18px] h-[18px]" />
                 <span className="flex-1">{item.label}</span>
-                {badgeValue !== null && badgeValue > 0 && (
+                {badgeValue > 0 && (
                   <span className="bg-[#E8612D] text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full min-w-[20px] text-center">
                     {badgeValue}
                   </span>
