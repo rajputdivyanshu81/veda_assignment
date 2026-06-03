@@ -10,6 +10,11 @@ export function useSocket(assignmentId: string | null, onCompleted?: (resultId: 
   const setGenerating = useAssignmentStore((state) => state.setGenerating);
   const setError = useAssignmentStore((state) => state.setError);
 
+  const onCompletedRef = useRef(onCompleted);
+  useEffect(() => {
+    onCompletedRef.current = onCompleted;
+  }, [onCompleted]);
+
   useEffect(() => {
     if (!assignmentId) return;
 
@@ -32,8 +37,8 @@ export function useSocket(assignmentId: string | null, onCompleted?: (resultId: 
     socket.on('generation:completed', (data: { assignmentId: string; resultId: string }) => {
       console.log('[WebSocket] Generation complete:', data);
       setGenerating(false);
-      if (onCompleted) {
-        onCompleted(data.resultId);
+      if (onCompletedRef.current) {
+        onCompletedRef.current(data.resultId);
       }
     });
 
@@ -51,7 +56,7 @@ export function useSocket(assignmentId: string | null, onCompleted?: (resultId: 
       console.log('[WebSocket] Cleaning up connection');
       socket.disconnect();
     };
-  }, [assignmentId, setGenerationProgress, setGenerating, setError, onCompleted]);
+  }, [assignmentId, setGenerationProgress, setGenerating, setError]);
 
   return socketRef.current;
 }
