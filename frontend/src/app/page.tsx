@@ -104,35 +104,69 @@ export default function AssignmentsPage() {
   // ── Empty State ──
   if (assignments.length === 0) {
     return (
-      <div className="flex flex-col items-center justify-center h-[70vh] text-center px-4">
-        {/* Illustration */}
-        <div className="relative mb-8">
-          {/* Document shape */}
-          <div className="w-28 h-36 bg-white rounded-xl border-2 border-border shadow-sm flex flex-col items-center justify-center gap-2 relative">
-            <div className="w-14 h-1.5 bg-border rounded-full" />
-            <div className="w-10 h-1.5 bg-border rounded-full" />
-            <div className="w-12 h-1.5 bg-border rounded-full" />
-            <div className="w-8 h-1.5 bg-border rounded-full" />
-            <div className="w-14 h-1.5 bg-border rounded-full" />
+      <div className="flex flex-col items-center justify-center min-h-[75vh] text-center px-4">
+        {/* Premium Graphic Container */}
+        <div className="relative w-64 h-64 flex items-center justify-center mb-6 select-none">
+          {/* Background circle */}
+          <div className="absolute w-48 h-48 bg-[#F3F4F6] rounded-full" />
+          
+          {/* Decorative Swirl (Left) */}
+          <svg className="absolute left-6 top-14 w-12 h-12 text-[#9CA3AF] opacity-80" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M40 35C30 35 15 28 20 18C25 8 35 12 30 22C25 32 10 22 15 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" fill="none" />
+          </svg>
+
+          {/* Decorative Sparkle (Bottom Left) */}
+          <svg className="absolute left-16 bottom-10 w-6 h-6 text-[#2563EB]" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2L14.8 9.2L22 12L14.8 14.8L12 22L9.2 14.8L2 12L9.2 9.2L12 2Z" />
+          </svg>
+
+          {/* Decorative Blue Dot (Right) */}
+          <div className="absolute right-12 top-28 w-3 h-3 bg-[#2563EB] rounded-full" />
+
+          {/* Floating Small Card (Top Right) */}
+          <div className="absolute right-10 top-12 w-14 h-8 bg-white border border-gray-200 rounded-lg shadow-sm flex items-center gap-1.5 px-2 z-10">
+            <div className="w-2 h-2 bg-[#9CA3AF] rounded-full" />
+            <div className="w-6 h-2 bg-gray-200 rounded-sm" />
           </div>
-          {/* Magnifying glass overlay */}
-          <div className="absolute -bottom-3 -right-3 w-12 h-12 bg-background rounded-full border-2 border-border flex items-center justify-center shadow-md">
-            <FileSearch className="w-5 h-5 text-muted" />
+
+          {/* Main Document (Center) */}
+          <div className="relative w-28 h-36 bg-white border border-gray-200 rounded-2xl shadow-md p-4 flex flex-col gap-3 transform -translate-x-2 -translate-y-1">
+            <div className="w-10 h-2 bg-[#0F172A] rounded-sm" />
+            <div className="w-16 h-1.5 bg-gray-200 rounded-sm" />
+            <div className="w-12 h-1.5 bg-gray-200 rounded-sm" />
+            <div className="w-18 h-1.5 bg-gray-200 rounded-sm" />
+            <div className="w-8 h-1.5 bg-gray-200 rounded-sm" />
+          </div>
+
+          {/* Magnifying Glass with Red Cross */}
+          <div className="absolute right-10 bottom-8 flex items-center justify-center">
+            {/* Handle */}
+            <div className="absolute w-5 h-14 bg-[#CBD5E1] rounded-full transform rotate-[-45deg] translate-x-8 translate-y-8" />
+            
+            {/* Lens Ring */}
+            <div className="relative w-24 h-24 bg-white/90 border-4 border-[#CBD5E1] rounded-full flex items-center justify-center shadow-lg">
+              {/* Red Cross */}
+              <svg className="w-8 h-8 text-[#EF4444]" fill="none" stroke="currentColor" strokeWidth="4.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+              </svg>
+            </div>
           </div>
         </div>
 
-        <h2 className="text-xl font-bold text-foreground mb-2">
+        {/* Text Contents */}
+        <h2 className="text-xl md:text-2xl font-bold text-[#1F2937] mb-2 font-sans">
           No assignments yet
         </h2>
-        <p className="text-sm text-muted max-w-md mb-8 leading-relaxed">
+        <p className="text-sm md:text-base text-gray-500 max-w-lg mb-8 leading-relaxed px-4">
           Create your first assignment to start collecting and grading student
           submissions. You can set up rubrics, define marking criteria, and let AI
           assist with grading.
         </p>
 
+        {/* Action Button */}
         <Link
           href="/create"
-          className="inline-flex items-center gap-2 bg-[#1A1A1A] text-white text-sm font-semibold px-6 py-3 rounded-full hover:bg-[#333] transition-colors"
+          className="inline-flex items-center gap-2 bg-[#111827] text-white text-sm font-semibold px-6 py-3.5 rounded-full hover:bg-black transition-all shadow-md active:scale-95"
         >
           <Plus className="w-4 h-4" />
           Create Your First Assignment
