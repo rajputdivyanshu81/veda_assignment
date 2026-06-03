@@ -70,7 +70,7 @@ export default function LandingPage() {
             <a href="#" className="block text-sm font-medium text-[#404040]" onClick={() => setMobileMenuOpen(false)}>Solutions</a>
             <a href="#" className="block text-sm font-medium text-[#404040]" onClick={() => setMobileMenuOpen(false)}>Teachers</a>
             <a href="#" className="block text-sm font-medium text-[#404040]" onClick={() => setMobileMenuOpen(false)}>About Us</a>
-            <Link href="/sign-up" className="block text-sm text-center font-semibold bg-[#1A1A1A] text-white py-3 rounded-xl mt-4">Contact Us</Link>
+            <Link href="/sign-up" className="block text-sm text-center font-semibold bg-[#1A1A1A] text-white py-3 rounded-xl mt-4">SignIn</Link>
           </div>
         )}
       </nav>
