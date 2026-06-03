@@ -139,9 +139,14 @@ export default function CreateAssignmentPage() {
   const handleSubmit = async () => {
     try {
       const assignmentId = await createAssignment({
-        title: `Assignment – ${new Date().toLocaleDateString()}`,
+        title: `Assessment – ${new Date().toLocaleDateString()}`,
         dueDate,
         questionTypes: questionRows.map((r) => r.type),
+        questionRows: questionRows.map((r) => ({
+          type: r.type,
+          count: r.count,
+          marks: r.marks,
+        })),
         totalQuestions,
         totalMarks,
         instructions: additionalInfo,

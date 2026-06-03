@@ -59,6 +59,7 @@ interface AssignmentState {
     title: string;
     dueDate: string;
     questionTypes: string[];
+    questionRows: { type: string; count: number; marks: number }[];
     totalQuestions: number;
     totalMarks: number;
     instructions?: string;
