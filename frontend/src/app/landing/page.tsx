@@ -109,13 +109,38 @@ export default function LandingPage() {
           </p>
 
           {/* CTAs */}
-          <div className="flex flex-col items-center justify-center">
+          <div className="flex flex-col items-center justify-center mb-16">
             <Link
               href="/sign-in"
               className="group inline-flex items-center gap-2 bg-[#1A1A1A] hover:bg-black text-white font-semibold px-8 py-3.5 rounded-full text-base transition-all shadow-lg hover:shadow-xl"
             >
               Book a meeting
             </Link>
+          </div>
+          
+          {/* ═══ TRUSTED BY SECTION ═══ */}
+          <div className="text-center pb-8 border-b border-gray-100/0">
+            <p className="text-sm font-medium text-[#4A6482] mb-8">Trusted and Backed by</p>
+            <div className="flex flex-wrap justify-center items-center gap-8 sm:gap-12 md:gap-16 opacity-70 grayscale hover:grayscale-0 transition-all duration-500">
+              <div className="flex items-center gap-2 font-bold text-xl text-gray-400">
+                <span className="w-6 h-6 rounded bg-gray-400 block"></span> Startups
+              </div>
+              <div className="flex items-center gap-2 font-bold text-xl text-gray-400">
+                aws <span className="font-light">startups</span>
+              </div>
+              <div className="flex items-center gap-2 font-bold text-xl text-gray-400">
+                <span className="w-6 h-6 bg-gray-400 rounded-sm block"></span> Microsoft <span className="font-light text-sm mt-1 block">for Startups</span>
+              </div>
+              <div className="flex items-center gap-2 font-bold text-lg text-gray-400">
+                <div className="grid grid-cols-3 gap-0.5">
+                   <div className="w-1.5 h-1.5 bg-gray-400"></div><div className="w-1.5 h-1.5 bg-gray-400"></div><div className="w-1.5 h-1.5 bg-gray-400"></div>
+                   <div className="w-1.5 h-1.5 bg-gray-400"></div><div className="w-1.5 h-1.5 bg-transparent"></div><div className="w-1.5 h-1.5 bg-gray-400"></div>
+                   <div className="w-1.5 h-1.5 bg-gray-400"></div><div className="w-1.5 h-1.5 bg-gray-400"></div><div className="w-1.5 h-1.5 bg-gray-400"></div>
+                </div>
+                <div className="text-left leading-tight"><span className="block text-sm">Perplexity</span><span className="block text-[10px] font-normal">AI Business Fellowship</span></div>
+              </div>
+              <div className="font-bold text-2xl text-gray-400">Google</div>
+            </div>
           </div>
         </div>
       </section>
@@ -477,34 +502,6 @@ export default function LandingPage() {
                 </div>
               </details>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ═══ TRUSTED BY SECTION ═══ */}
-      <section className="py-12 border-t border-gray-100 bg-[#FDFDFD]">
-        <div className="max-w-6xl mx-auto px-4 text-center">
-          <p className="text-sm sm:text-base font-medium text-gray-500 mb-8">Trusted and Backed by</p>
-          <div className="flex flex-wrap justify-center items-center gap-8 sm:gap-16 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
-            {/* Logos placeholders */}
-            <div className="flex items-center gap-2 font-bold text-xl text-gray-400">
-              <span className="w-6 h-6 rounded bg-gray-400 block"></span> Startups
-            </div>
-            <div className="flex items-center gap-2 font-bold text-xl text-gray-400">
-              aws <span className="font-light">startups</span>
-            </div>
-            <div className="flex items-center gap-2 font-bold text-xl text-gray-400">
-              <span className="w-6 h-6 bg-gray-400 rounded-sm block"></span> Microsoft <span className="font-light text-sm mt-1 block">for Startups</span>
-            </div>
-            <div className="flex items-center gap-2 font-bold text-lg text-gray-400">
-              <div className="grid grid-cols-3 gap-0.5">
-                 <div className="w-1.5 h-1.5 bg-gray-400"></div><div className="w-1.5 h-1.5 bg-gray-400"></div><div className="w-1.5 h-1.5 bg-gray-400"></div>
-                 <div className="w-1.5 h-1.5 bg-gray-400"></div><div className="w-1.5 h-1.5 bg-transparent"></div><div className="w-1.5 h-1.5 bg-gray-400"></div>
-                 <div className="w-1.5 h-1.5 bg-gray-400"></div><div className="w-1.5 h-1.5 bg-gray-400"></div><div className="w-1.5 h-1.5 bg-gray-400"></div>
-              </div>
-              <div className="text-left leading-tight"><span className="block text-sm">Perplexity</span><span className="block text-[10px] font-normal">AI Business Fellowship</span></div>
-            </div>
-            <div className="font-bold text-2xl text-gray-400">Google</div>
           </div>
         </div>
       </section>
