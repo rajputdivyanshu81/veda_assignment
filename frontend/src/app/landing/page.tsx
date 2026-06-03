@@ -389,7 +389,7 @@ export default function LandingPage() {
       </section>
 
       {/* ═══ TRUSTED BY SECTION ═══ */}
-      <section className="py-12 border-t border-gray-100">
+      <section className="py-12 border-t border-gray-100 bg-[#FDFDFD]">
         <div className="max-w-6xl mx-auto px-4 text-center">
           <p className="text-sm sm:text-base font-medium text-gray-500 mb-8">Trusted and Backed by</p>
           <div className="flex flex-wrap justify-center items-center gap-8 sm:gap-16 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
@@ -415,7 +415,40 @@ export default function LandingPage() {
           </div>
         </div>
       </section>
-      
+
+      {/* ═══ CTA SECTION ═══ */}
+      <section className="py-24 lg:py-32 px-4 bg-[#FDFDFD]">
+        <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
+          <div className="relative mb-8">
+            <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-3xl bg-[#1A1A1A] flex items-center justify-center shadow-xl">
+              <span className="text-white font-black text-6xl leading-none">V</span>
+            </div>
+            <div className="absolute -top-6 -right-6 text-6xl rotate-12 drop-shadow-lg">
+              👑
+            </div>
+          </div>
+          
+          <h2
+            className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight mb-6 text-[#1A1A1A]"
+            style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }}
+          >
+            See How VedaAI Works for Your School
+          </h2>
+          
+          <p className="text-[#505050] mb-10 max-w-2xl mx-auto text-lg leading-relaxed font-medium">
+            Experience how VedaAI can improve results, strengthen parent confidence, 
+            and deliver measurable academic impact.
+          </p>
+          
+          <Link
+            href="/sign-up"
+            className="group inline-flex items-center justify-center bg-[#1A1A1A] hover:bg-black text-white font-semibold px-10 py-4 rounded-full text-base transition-all shadow-lg hover:shadow-xl"
+          >
+            Contact Us
+          </Link>
+        </div>
+      </section>
+
       {/* ═══ FOOTER ═══ */}
       <footer className="pt-16 pb-8 px-4 bg-[#FDFDFD] relative overflow-hidden">
         <div className="max-w-6xl mx-auto">
