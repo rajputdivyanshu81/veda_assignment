@@ -20,13 +20,8 @@ interface MobileTab {
 const tabs: MobileTab[] = [
   {
     label: 'Home',
-    href: '/dashboard',
-    icon: <LayoutGrid size={22} />,
-  },
-  {
-    label: 'Assignments',
     href: '/',
-    icon: <ClipboardList size={22} />,
+    icon: <LayoutGrid size={22} />,
   },
   {
     label: 'Library',
