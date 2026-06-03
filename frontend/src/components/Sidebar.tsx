@@ -1,5 +1,6 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import {
@@ -22,6 +23,29 @@ const navItems = [
 
 export default function Sidebar() {
   const pathname = usePathname();
+  const [profileData, setProfileData] = useState({
+    schoolName: 'Delhi Public School',
+    schoolCity: 'Bokaro Steel City',
+    userInitials: 'N',
+    schoolPic: '',
+    profilePic: ''
+  });
+
+  useEffect(() => {
+    const loadProfileData = () => {
+      setProfileData({
+        schoolName: localStorage.getItem('vedaai_school_name') || 'Delhi Public School',
+        schoolCity: localStorage.getItem('vedaai_school_city') || 'Bokaro Steel City',
+        userInitials: localStorage.getItem('vedaai_user_initials') || 'N',
+        schoolPic: localStorage.getItem('vedaai_school_pic') || '',
+        profilePic: localStorage.getItem('vedaai_profile_pic') || ''
+      });
+    };
+    
+    loadProfileData();
+    window.addEventListener('settings-updated', loadProfileData);
+    return () => window.removeEventListener('settings-updated', loadProfileData);
+  }, []);
 
   return (
     <aside className="hidden lg:flex flex-col w-[230px] min-h-screen bg-white border-r border-[#E5E7EB] px-4 py-5 justify-between shrink-0">
@@ -76,30 +100,45 @@ export default function Sidebar() {
         {/* Settings */}
         <Link
           href="/settings"
-          className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-[#6B7280] hover:text-[#1A1A1A] hover:bg-[#F9FAFB] transition-colors mb-3"
+          className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-[#6B7280] hover:text-[#1A1A1A] hover:bg-[#F9FAFB] transition-colors mb-4"
         >
-          <Settings className="w-[18px] h-[18px]" />
-          Settings
+          <Settings className="w-5 h-5 stroke-[1.5]" />
+          <span className="text-[15px]">Settings</span>
         </Link>
 
         {/* Divider */}
-        <div className="border-t border-[#E5E7EB] my-3" />
+        <div className="border-t border-[#E5E7EB] my-4" />
 
-        {/* School Profile */}
-        <div className="flex items-center gap-3 px-2 py-2">
-          <div className="w-9 h-9 rounded-full bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center text-white text-xs font-bold shrink-0 overflow-hidden">
-            <img
-              src="https://api.dicebear.com/9.x/avataaars/svg?seed=school"
-              alt="School"
-              className="w-full h-full object-cover"
-            />
+        {/* School & User Profile */}
+        <div className="flex items-center gap-3 px-2 py-2 mt-2">
+          {/* Overlapping Avatars */}
+          <div className="relative w-[42px] h-[42px] shrink-0">
+            {/* Background School Avatar (Orange/Blue) */}
+            <div className="absolute top-0 right-0 w-9 h-9 rounded-full bg-[#FF9800] overflow-hidden flex items-center justify-center">
+              <img
+                src={profileData.schoolPic || "https://api.dicebear.com/7.x/shapes/svg?seed=school&backgroundColor=FF9800"}
+                alt="School"
+                className="w-full h-full object-cover"
+              />
+            </div>
+            {/* Foreground User Avatar (Dark 'N') */}
+            <div className="absolute bottom-0 left-0 w-7 h-7 rounded-full bg-[#242424] border-[1.5px] border-white flex items-center justify-center shadow-sm overflow-hidden z-10">
+               {profileData.profilePic ? (
+                 <img src={profileData.profilePic} alt="User" className="w-full h-full object-cover" />
+               ) : (
+                 <span className="text-white text-[11px] font-medium tracking-wide">
+                   {profileData.userInitials}
+                 </span>
+               )}
+            </div>
           </div>
-          <div className="flex-1 min-w-0">
-            <p className="text-xs font-semibold text-[#1A1A1A] truncate leading-tight">
-              Delhi Public School
+          
+          <div className="flex-1 min-w-0 flex flex-col justify-center">
+            <p className="text-[14px] font-semibold text-[#1A1A1A] truncate leading-tight tracking-tight mb-0.5">
+              {profileData.schoolName}
             </p>
-            <p className="text-[11px] text-[#6B7280] truncate leading-tight">
-              Bokaro Steel City
+            <p className="text-[13px] text-[#6B7280] truncate leading-tight">
+              {profileData.schoolCity}
             </p>
           </div>
         </div>
