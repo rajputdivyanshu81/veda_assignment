@@ -1,13 +1,13 @@
+import dotenv from 'dotenv';
+dotenv.config();
+
 import express from 'express';
 import http from 'http';
 import { Server } from 'socket.io';
 import cors from 'cors';
 import mongoose from 'mongoose';
-import dotenv from 'dotenv';
 import { assignmentRoutes } from './routes/assignmentRoutes';
 import { startWorker } from './queues/worker';
-
-dotenv.config();
 
 const app = express();
 const server = http.createServer(app);
