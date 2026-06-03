@@ -44,12 +44,12 @@ export default function LandingPage() {
             </div>
 
             {/* Desktop CTA */}
-            <div className="hidden md:flex items-center gap-3">
+            <div className="hidden md:flex items-center gap-2">
               <Link
                 href="/sign-up"
                 className="text-sm font-semibold bg-[#1A1A1A] hover:bg-black text-white px-6 py-3 rounded-full transition-colors shadow-md"
               >
-                Contact Us
+                SignIn
               </Link>
             </div>
 
@@ -76,7 +76,7 @@ export default function LandingPage() {
       </nav>
 
       {/* ═══ HERO SECTION ═══ */}
-      <section className="relative pt-36 lg:pt-44 pb-16 lg:pb-24 px-4 overflow-hidden">
+      <section className="relative pt-24 lg:pt-28 pb-16 lg:pb-24 px-4 overflow-hidden">
         {/* Background gradient blob (light blue/gray) */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[800px] bg-gradient-to-b from-[#E6F4FF]/60 to-transparent rounded-full blur-[100px] pointer-events-none -z-10" />
 
