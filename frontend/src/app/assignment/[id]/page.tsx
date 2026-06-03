@@ -215,31 +215,9 @@ export default function AssignmentOutput() {
           {/* End of Paper */}
           {currentPaper && currentPaper.sections.length > 0 && (
             <div className="mt-10 pt-6 border-t border-[#E5E7EB]">
-              <p className="text-sm font-semibold text-[#1A1A1A] text-center mb-8">
+              <p className="text-sm font-semibold text-[#1A1A1A] text-center mb-2">
                 End of Question Paper
               </p>
-
-              {/* Answer Key Section */}
-              <div>
-                <h3 className="text-base font-bold text-[#1A1A1A] mb-4">Answer Key:</h3>
-                <div className="space-y-3">
-                  {currentPaper.sections.map((section, sIdx) =>
-                    section.questions.map((q, qIdx) => {
-                      const globalNum = getGlobalQuestionNumber(sIdx, qIdx);
-                      return (
-                        <div key={`ans-${sIdx}-${qIdx}`} className="text-sm text-[#4B5563]">
-                          <p>
-                            <span className="font-medium text-[#1A1A1A]">{globalNum}.</span>{' '}
-                            {q.type === 'MCQ'
-                              ? `The correct answer relates to the key concepts of ${currentAssignment.title}.`
-                              : `A comprehensive answer should cover the fundamental principles discussed in ${currentAssignment.title}.`}
-                          </p>
-                        </div>
-                      );
-                    })
-                  )}
-                </div>
-              </div>
             </div>
           )}
         </div>
