@@ -123,16 +123,16 @@ export default function LandingPage() {
       </section>
 
       {/* ═══ MOCKUP IMAGE SECTION ═══ */}
-      <section className="px-4 pb-16 lg:pb-24 relative z-20">
+      <section className="px-4 pb-16 lg:pb-32 relative z-20 border-b border-gray-100">
         <div className="max-w-6xl mx-auto">
           {/* Dashboard UI Mockup Wrapper */}
-          <div className="relative rounded-3xl overflow-hidden border border-gray-200 shadow-2xl bg-white aspect-[16/9] flex items-center justify-center bg-gray-50">
+          <div className="relative rounded-[2rem] overflow-hidden border border-gray-200 shadow-2xl shadow-gray-200/50 bg-white aspect-[16/9] flex items-center justify-center bg-gray-50/50">
             {/* We recreate a stylized version of the dashboard from the screenshot */}
             <div className="w-full h-full p-4 sm:p-8 flex flex-col">
               {/* Header inside mockup */}
               <div className="flex justify-between items-center mb-8 pb-4 border-b border-gray-100">
                  <div className="flex items-center gap-2">
-                    <div className="w-8 h-8 rounded-lg bg-[#FF8000] flex items-center justify-center">
+                    <div className="w-8 h-8 rounded-lg bg-[#1A1A1A] flex items-center justify-center">
                       <span className="text-white font-bold">V</span>
                     </div>
                     <span className="font-bold text-lg">VedaAI</span>
@@ -147,7 +147,7 @@ export default function LandingPage() {
               <div className="flex-1 flex gap-6">
                  {/* Sidebar */}
                  <div className="w-64 bg-gray-50 rounded-2xl p-4 hidden md:block">
-                    <div className="w-full h-10 bg-black text-white rounded-xl flex items-center justify-center font-medium mb-6 text-sm">
+                    <div className="w-full h-10 bg-[#1A1A1A] text-white rounded-xl flex items-center justify-center font-medium mb-6 text-sm">
                        + Create Assignment
                     </div>
                     <div className="space-y-3">
@@ -158,28 +158,83 @@ export default function LandingPage() {
                  </div>
 
                  {/* Main Area */}
-                 <div className="flex-1 bg-white rounded-2xl border border-gray-100 p-6 flex flex-col gap-6 shadow-sm">
-                    <div className="font-semibold text-gray-800">Overall Class Performance Summary</div>
+                 <div className="flex-1 flex flex-col gap-6">
+                    <div className="font-semibold text-gray-800 text-lg">
+                       Hi Madhur 👋<br/>
+                       <span className="text-sm font-normal text-gray-500">Welcome Back, Ready to create your next assignment?</span>
+                    </div>
+                    
+                    {/* Stats Row */}
                     <div className="flex gap-4">
-                       <div className="flex-1 bg-gray-50 rounded-xl p-4 border border-gray-100 text-center">
-                          <div className="text-3xl font-bold text-green-500 mb-1">82%</div>
-                          <div className="text-xs text-gray-500">Average Score</div>
+                       <div className="flex-1 bg-[#2C2F33] rounded-2xl p-5 border border-gray-700 text-white flex justify-between items-center relative overflow-hidden">
+                          <div>
+                             <div className="text-xs text-gray-400 mb-4 font-medium uppercase tracking-wider">Assignment<br/>Reviewed in<br/>last 30 days</div>
+                          </div>
+                          <div className="relative w-24 h-12 flex justify-center">
+                             <div className="absolute w-24 h-24 border-[12px] border-orange-500 border-b-transparent rounded-full -bottom-12"></div>
+                             <div className="absolute bottom-1 font-bold text-2xl">67<span className="text-[10px] block font-normal text-gray-400 -mt-1">of 80</span></div>
+                          </div>
                        </div>
-                       <div className="flex-1 bg-gray-50 rounded-xl p-4 border border-gray-100 text-center">
-                          <div className="text-3xl font-bold text-red-500 mb-1">95%</div>
-                          <div className="text-xs text-gray-500">Submission Rate</div>
+                       <div className="flex-1 bg-[#2C2F33] rounded-2xl p-5 border border-gray-700 text-white flex flex-col justify-center relative overflow-hidden">
+                          <div className="text-xs text-gray-400 mb-1 font-medium">Time Saved By AI</div>
+                          <div className="text-3xl font-bold mb-1">31.7 hrs</div>
+                          <div className="text-[10px] text-gray-400">8.5 hrs more than last month ↗</div>
+                       </div>
+                       <div className="flex-1 bg-white rounded-2xl p-5 border border-gray-200 text-gray-800 flex flex-col justify-center shadow-sm">
+                          <div className="text-xs text-gray-500 mb-1 font-medium">Total Assignments Graded</div>
+                          <div className="text-3xl font-bold mb-1 text-gray-900">128</div>
+                          <div className="text-[10px] text-gray-400">Submitted, pending evaluation</div>
                        </div>
                     </div>
-                    <div className="font-semibold text-gray-800 mt-4">Learning Gaps Analysis</div>
-                    <div className="flex-1 bg-red-50/50 rounded-xl p-4 border border-red-100">
-                       <div className="text-sm font-medium mb-3">Frequently missed concepts</div>
-                       <div className="flex justify-between items-center text-sm mb-2">
-                          <span>1. Ohm's Law Application</span>
-                          <span className="text-red-500 font-bold">23%</span>
+                    
+                    {/* Recent Assignments Header */}
+                    <div className="flex justify-between items-center mt-2">
+                       <div className="font-semibold text-gray-800 flex items-center gap-2">
+                          <span className="w-2 h-2 rounded-full bg-green-500"></span> Recent Assignments
                        </div>
-                       <div className="flex justify-between items-center text-sm">
-                          <span>2. Circuit Diagrams</span>
-                          <span className="text-red-500 font-bold">18%</span>
+                       <div className="text-xs text-gray-500 font-medium">View All &gt;</div>
+                    </div>
+                    
+                    {/* Recent Assignments Cards */}
+                    <div className="flex gap-4">
+                       <div className="flex-1 bg-white rounded-2xl p-5 border border-gray-200 shadow-sm">
+                          <div className="flex justify-between items-start mb-4">
+                             <div>
+                                <div className="font-bold text-gray-800 flex items-center gap-2">Assignment on Motion <span className="bg-green-100 text-green-700 text-[10px] px-2 py-0.5 rounded-full">Active</span></div>
+                                <div className="text-[10px] text-gray-500">Class 10-A • Science</div>
+                             </div>
+                             <div className="text-gray-400 text-lg">⋮</div>
+                          </div>
+                          <div className="flex justify-between items-end">
+                             <div className="font-bold text-xl text-gray-800">50/50 <span className="text-[10px] font-normal text-gray-500">Submitted</span></div>
+                             <div className="text-[10px] text-gray-500 text-right">
+                                <div>Assigned on: 20-08-2025</div>
+                                <div className="font-semibold text-gray-700 mt-0.5">Due: 21-08-2025</div>
+                             </div>
+                          </div>
+                          <div className="w-full h-1 bg-gray-100 mt-4 rounded-full overflow-hidden">
+                             <div className="w-full h-full bg-orange-500 rounded-full"></div>
+                          </div>
+                       </div>
+                       
+                       <div className="flex-1 bg-white rounded-2xl p-5 border border-gray-200 shadow-sm">
+                          <div className="flex justify-between items-start mb-4">
+                             <div>
+                                <div className="font-bold text-gray-800 flex items-center gap-2">Quiz on Electricity <span className="bg-gray-100 text-gray-500 text-[10px] px-2 py-0.5 rounded-full">Closed</span></div>
+                                <div className="text-[10px] text-gray-500">Class 10-A • Science</div>
+                             </div>
+                             <div className="text-gray-400 text-lg">⋮</div>
+                          </div>
+                          <div className="flex justify-between items-end">
+                             <div className="font-bold text-xl text-gray-800">47/50 <span className="text-[10px] font-normal text-gray-500">Submitted</span></div>
+                             <div className="text-[10px] text-gray-500 text-right">
+                                <div>Assigned on: 20-08-2025</div>
+                                <div className="font-semibold text-gray-700 mt-0.5">Due: 21-08-2025</div>
+                             </div>
+                          </div>
+                          <div className="w-full h-1 bg-gray-100 mt-4 rounded-full overflow-hidden">
+                             <div className="w-[94%] h-full bg-orange-500 rounded-full"></div>
+                          </div>
                        </div>
                     </div>
                  </div>
@@ -187,8 +242,24 @@ export default function LandingPage() {
             </div>
             
             {/* Fade out bottom gradient */}
-            <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent" />
+            <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-gray-50/50 to-transparent" />
           </div>
+        </div>
+      </section>
+
+      {/* ═══ AI ASSESSMENT GRADER INTRO ═══ */}
+      <section className="py-20 px-4 bg-[#FDFDFD]">
+        <div className="max-w-6xl mx-auto text-center">
+          <h2
+            className="text-3xl sm:text-4xl lg:text-[2.75rem] font-extrabold tracking-tight mb-6 text-[#1A1A1A] leading-tight"
+            style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }}
+          >
+            VedaAI is an AI Academic Assessment system<br />
+            that enables educational institutions to deliver<br />
+            stronger academic results, increase parent<br />
+            confidence, and build long-term institutional<br />
+            reputation.
+          </h2>
         </div>
       </section>
 
