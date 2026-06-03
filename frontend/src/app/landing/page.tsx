@@ -565,8 +565,8 @@ export default function LandingPage() {
           {/* Top section with logo and links */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16 relative z-10">
             {/* Logo & Tagline */}
-            <div className="flex items-center gap-2 mb-6">
-                <img src="/logo.png" alt="VedaAI Logo" className="w-8 h-8 object-contain rounded-lg" />
+            <div className="flex flex-col items-center text-center md:flex-row md:items-center md:text-left gap-3 mb-6">
+                <img src="/logo.png" alt="VedaAI Logo" className="w-9 h-9 object-contain rounded-lg" />
                 <div>
                   <h3 className="font-bold text-[#1A1A1A] text-lg mb-1" style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }}>VedaAI</h3>
                   <p className="text-[#888888] text-sm">Grade assignments in minutes not in hours</p>
@@ -574,7 +574,7 @@ export default function LandingPage() {
             </div>
 
             {/* Links Column */}
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col items-center md:items-start gap-3 text-center md:text-left">
               <h4 className="text-[#888888] text-sm mb-1">Links</h4>
               <a href="#" className="text-[#1A1A1A] text-sm font-medium hover:text-[#FF8000] transition-colors">Home</a>
               <a href="#" className="text-[#1A1A1A] text-sm font-medium hover:text-[#FF8000] transition-colors">Solutions</a>
@@ -586,7 +586,7 @@ export default function LandingPage() {
             </div>
 
             {/* Connect Column */}
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col items-center md:items-start gap-3 text-center md:text-left">
               <h4 className="text-[#888888] text-sm mb-1">Connect</h4>
               <a href="#" className="text-[#1A1A1A] text-sm font-medium hover:text-[#FF8000] transition-colors">LinkedIn</a>
               <a href="#" className="text-[#1A1A1A] text-sm font-medium hover:text-[#FF8000] transition-colors">X</a>
@@ -605,13 +605,13 @@ export default function LandingPage() {
           </div>
 
           {/* Bottom Copyright & Legal Links */}
-          <div className="flex flex-col md:flex-row justify-between items-end md:items-center gap-6 relative z-10 pt-4 border-t border-transparent">
-            <div className="text-[#A0A0A0] text-xs font-medium">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-6 relative z-10 pt-4 border-t border-transparent text-center md:text-left">
+            <div className="text-[#A0A0A0] text-xs font-medium w-full md:w-auto">
               <p>© 2026 Vedafy Technologies Pvt. Ltd.</p>
               <p>All rights reserved</p>
             </div>
             
-            <div className="flex flex-wrap items-center gap-6 text-[#A0A0A0] text-xs font-medium">
+            <div className="flex flex-wrap justify-center md:justify-end items-center gap-6 text-[#A0A0A0] text-xs font-medium w-full md:w-auto">
               <a href="#" className="hover:text-[#1A1A1A] transition-colors">Privacy Policy</a>
               <a href="#" className="hover:text-[#1A1A1A] transition-colors">Terms & Conditions</a>
               <a href="#" className="hover:text-[#1A1A1A] transition-colors">Sustainability</a>
