@@ -172,10 +172,13 @@ export default function LandingPage() {
                           <div>
                              <div className="text-xs text-gray-400 mb-4 font-medium uppercase tracking-wider">Assignment<br/>Reviewed in<br/>last 30 days</div>
                           </div>
-                          <div className="relative w-24 h-12 flex justify-center">
-                             <div className="absolute w-24 h-24 border-[12px] border-orange-500 border-b-transparent rounded-full -bottom-12"></div>
-                             <div className="absolute bottom-1 font-bold text-2xl">67<span className="text-[10px] block font-normal text-gray-400 -mt-1">of 80</span></div>
-                          </div>
+                           <div className="relative w-28 h-14 flex justify-center overflow-hidden">
+                              <div className="absolute w-28 h-28 border-[10px] border-orange-500 border-b-transparent rounded-full top-0"></div>
+                              <div className="absolute bottom-0 text-center flex flex-col items-center leading-none">
+                                <span className="font-bold text-xl text-white">67</span>
+                                <span className="text-[10px] font-normal text-gray-400 mt-0.5">of 80</span>
+                              </div>
+                           </div>
                        </div>
                        <div className="flex-1 bg-[#2C2F33] rounded-2xl p-5 border border-gray-700 text-white flex flex-col justify-center relative overflow-hidden">
                           <div className="text-xs text-gray-400 mb-1 font-medium">Time Saved By AI</div>
