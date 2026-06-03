@@ -187,7 +187,7 @@ router.get('/assignments/:id/pdf', async (req: Request, res: Response) => {
     doc.text('Student Name: _______________________', 50, doc.y, { lineBreak: false });
     doc.text('Roll No: __________________', 320, doc.y);
     doc.moveDown(0.5);
-    doc.text('Section: ____________________________', 50, doc.y, { lineBreak: false });
+    doc.text('Class & Section: ____________________', 50, doc.y, { lineBreak: false });
     doc.text('Date: ____________________', 320, doc.y);
     doc.moveDown(1);
 

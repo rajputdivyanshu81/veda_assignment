@@ -115,7 +115,7 @@ export default function AssignmentOutput() {
             <p className="text-sm text-[#1A1A1A] mt-1">
               Subject: {currentAssignment.title}
             </p>
-            <p className="text-sm text-[#1A1A1A]">Class: 5th</p>
+            <p className="text-sm text-[#1A1A1A]">Class: ____________________</p>
           </div>
 
           {/* Time & Marks Row */}
@@ -133,7 +133,7 @@ export default function AssignmentOutput() {
           <div className="mb-8 space-y-1.5 text-sm text-[#1A1A1A]">
             <p>Name: ____________________</p>
             <p>Roll Number: ____________________</p>
-            <p>Class: 5th Section: ________</p>
+            <p>Class: ____________________ Section: ________</p>
           </div>
 
           {/* Sections */}
