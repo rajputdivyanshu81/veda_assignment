@@ -37,6 +37,7 @@ export function useSocket(assignmentId: string | null, onCompleted?: (resultId: 
     socket.on('generation:completed', (data: { assignmentId: string; resultId: string }) => {
       console.log('[WebSocket] Generation complete:', data);
       setGenerating(false);
+      window.dispatchEvent(new Event('assignments-changed'));
       if (onCompletedRef.current) {
         onCompletedRef.current(data.resultId);
       }

@@ -104,6 +104,7 @@ export const useAssignmentStore = create<AssignmentState>((set, get) => ({
       }
       const data: Assignment = await response.json();
       set({ activeAssignmentId: data._id });
+      window.dispatchEvent(new Event('assignments-changed'));
       return data._id;
     } catch (err: any) {
       set({ isGenerating: false, error: err.message });

@@ -70,6 +70,7 @@ export default function AssignmentsPage() {
     try {
       await fetch(`${API_URL}/api/assignments/${id}`, { method: 'DELETE' });
       setAssignments((prev) => prev.filter((a) => a._id !== id));
+      window.dispatchEvent(new Event('assignments-changed'));
     } catch {
       // handle error
     }

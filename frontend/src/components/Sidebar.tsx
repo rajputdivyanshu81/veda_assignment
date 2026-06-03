@@ -16,9 +16,9 @@ import {
 const navItems = [
   { label: 'Home', href: '/dashboard', icon: Home },
   { label: 'My Groups', href: '/groups', icon: Users },
-  { label: 'Assignments', href: '/', icon: ClipboardList, badge: 10 },
+  { label: 'Assignments', href: '/', icon: ClipboardList },
   { label: "AI Teacher's Toolkit", href: '/toolkit', icon: MonitorPlay },
-  { label: 'My Library', href: '/library', icon: Bookmark, badge: 32 },
+  { label: 'My Library', href: '/library', icon: Bookmark },
 ];
 
 export default function Sidebar() {
@@ -29,6 +29,10 @@ export default function Sidebar() {
     userInitials: 'N',
     schoolPic: '',
     profilePic: ''
+  });
+  const [counts, setCounts] = useState<{ assignments: number | null; library: number | null }>({
+    assignments: null,
+    library: null
   });
 
   useEffect(() => {
@@ -41,10 +45,34 @@ export default function Sidebar() {
         profilePic: localStorage.getItem('vedaai_profile_pic') || ''
       });
     };
+
+    const fetchCounts = async () => {
+      try {
+        const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+        const res = await fetch(`${API_URL}/api/assignments`);
+        if (res.ok) {
+          const data = await res.json();
+          const items = Array.isArray(data) ? data : data.assignments || [];
+          const completed = items.filter((a: any) => a.status === 'completed').length;
+          setCounts({
+            assignments: items.length,
+            library: completed
+          });
+        }
+      } catch (err) {
+        console.error('Failed to fetch counts:', err);
+      }
+    };
     
     loadProfileData();
+    fetchCounts();
     window.addEventListener('settings-updated', loadProfileData);
-    return () => window.removeEventListener('settings-updated', loadProfileData);
+    // Also trigger refetching count when assignments change
+    window.addEventListener('assignments-changed', fetchCounts);
+    return () => {
+      window.removeEventListener('settings-updated', loadProfileData);
+      window.removeEventListener('assignments-changed', fetchCounts);
+    };
   }, []);
 
   return (
@@ -72,6 +100,11 @@ export default function Sidebar() {
             const isActive =
               pathname === item.href ||
               (item.href === '/' && pathname === '/');
+            
+            const badgeValue = 
+              item.label === 'Assignments' ? counts.assignments :
+              item.label === 'My Library' ? counts.library : null;
+
             return (
               <Link
                 key={item.href}
@@ -84,9 +117,9 @@ export default function Sidebar() {
               >
                 <item.icon className="w-[18px] h-[18px]" />
                 <span className="flex-1">{item.label}</span>
-                {item.badge && (
+                {badgeValue !== null && badgeValue > 0 && (
                   <span className="bg-[#E8612D] text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full min-w-[20px] text-center">
-                    {item.badge}
+                    {badgeValue}
                   </span>
                 )}
               </Link>
