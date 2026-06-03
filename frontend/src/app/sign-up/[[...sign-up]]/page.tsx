@@ -2,18 +2,20 @@ import { SignUp } from '@clerk/nextjs';
 
 export default function SignUpPage() {
   return (
-    <div className="min-h-screen bg-[#0A0A0A] flex items-center justify-center px-4">
+    <div className="min-h-screen w-full flex-1 bg-[#FDFDFD] flex items-center justify-center px-4">
       <SignUp
         appearance={{
           elements: {
             rootBox: 'mx-auto',
-            cardBox: 'shadow-2xl shadow-orange-500/10',
-            card: 'bg-[#141414] border border-[#2A2A2A]',
-            headerTitle: 'text-white',
-            headerSubtitle: 'text-[#737373]',
-            socialButtonsBlockButton: 'bg-[#1A1A1A] border-[#2A2A2A] text-white hover:bg-[#2A2A2A]',
-            formFieldLabel: 'text-[#A0A0A0]',
-            formFieldInput: 'bg-[#1A1A1A] border-[#2A2A2A] text-white',
+            card: 'bg-white border border-gray-200 shadow-xl',
+            headerTitle: 'text-[#1A1A1A]',
+            headerSubtitle: 'text-gray-500',
+            socialButtonsBlockButton: 'border-gray-200 bg-white hover:bg-gray-50 text-gray-800',
+            socialButtonsBlockButtonText: 'text-gray-800',
+            dividerLine: 'bg-gray-200',
+            dividerText: 'text-gray-400',
+            formFieldLabel: 'text-gray-700',
+            formFieldInput: 'bg-gray-50 border-gray-200 text-gray-900',
             formButtonPrimary: 'bg-[#FF8000] hover:bg-[#E67300]',
             footerActionLink: 'text-[#FF8000] hover:text-[#E67300]',
             identityPreviewEditButton: 'text-[#FF8000]',

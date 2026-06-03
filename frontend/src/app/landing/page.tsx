@@ -15,7 +15,7 @@ export default function LandingPage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#FDFDFD] text-[#1A1A1A] overflow-x-hidden" style={{ fontFamily: "'Inter', 'Figtree', sans-serif" }}>
+    <div className="min-h-screen w-full flex-1 bg-[#FDFDFD] text-[#1A1A1A] overflow-x-hidden" style={{ fontFamily: "'Inter', 'Figtree', sans-serif" }}>
       {/* ═══ NAVBAR ═══ */}
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
