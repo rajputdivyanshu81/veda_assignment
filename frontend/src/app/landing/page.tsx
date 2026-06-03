@@ -24,9 +24,7 @@ export default function LandingPage() {
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
             <div className="flex items-center gap-2.5">
-              <div className="w-10 h-10 rounded-xl bg-[#1A1A1A] flex items-center justify-center">
-                <span className="text-white font-black text-xl leading-none">V</span>
-              </div>
+              <img src="/logo.png" alt="VedaAI Logo" className="w-10 h-10 object-contain rounded-xl" />
               <span
                 className="text-2xl font-bold tracking-tight text-[#1A1A1A]"
                 style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }}
@@ -173,9 +171,7 @@ export default function LandingPage() {
               {/* Header inside mockup */}
               <div className="flex justify-between items-center mb-8 pb-4 border-b border-gray-100">
                  <div className="flex items-center gap-2">
-                    <div className="w-8 h-8 rounded-lg bg-[#1A1A1A] flex items-center justify-center">
-                      <span className="text-white font-bold">V</span>
-                    </div>
+                    <img src="/logo.png" alt="VedaAI Logo" className="w-8 h-8 object-contain rounded-lg" />
                     <span className="font-bold text-lg">VedaAI</span>
                  </div>
                  <div className="flex gap-4 items-center">
@@ -528,8 +524,8 @@ export default function LandingPage() {
       <section className="py-24 lg:py-32 px-4 bg-[#FDFDFD]">
         <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
           <div className="relative mb-8">
-            <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-3xl bg-[#1A1A1A] flex items-center justify-center shadow-xl">
-              <span className="text-white font-black text-6xl leading-none">V</span>
+            <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-3xl bg-[#1A1A1A] flex items-center justify-center shadow-xl overflow-hidden p-3">
+              <img src="/logo.png" alt="VedaAI Logo" className="w-full h-full object-contain" />
             </div>
             <div className="absolute -top-6 -right-6 text-6xl rotate-12 drop-shadow-lg">
               👑
@@ -563,12 +559,12 @@ export default function LandingPage() {
           {/* Top section with logo and links */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16 relative z-10">
             {/* Logo & Tagline */}
-            <div>
-              <div className="w-12 h-12 rounded-xl bg-[#1A1A1A] flex items-center justify-center mb-4">
-                <span className="text-white font-black text-2xl leading-none">V</span>
-              </div>
-              <h3 className="font-bold text-[#1A1A1A] text-lg mb-1" style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }}>VedaAI</h3>
-              <p className="text-[#888888] text-sm">Grade assignments in minutes not in hours</p>
+            <div className="flex items-center gap-2 mb-6">
+                <img src="/logo.png" alt="VedaAI Logo" className="w-8 h-8 object-contain rounded-lg" />
+                <div>
+                  <h3 className="font-bold text-[#1A1A1A] text-lg mb-1" style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }}>VedaAI</h3>
+                  <p className="text-[#888888] text-sm">Grade assignments in minutes not in hours</p>
+                </div>
             </div>
 
             {/* Links Column */}

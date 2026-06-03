@@ -29,9 +29,7 @@ export default function Sidebar() {
       <div>
         {/* VedaAI Logo */}
         <div className="flex items-center gap-2 px-2 mb-5">
-          <div className="w-8 h-8 rounded-lg bg-[#E8612D] flex items-center justify-center">
-            <span className="text-white font-extrabold text-base leading-none">V</span>
-          </div>
+          <img src="/logo.png" alt="VedaAI Logo" className="w-8 h-8 object-contain rounded-lg" />
           <span className="text-lg font-bold text-[#1A1A1A] tracking-tight">VedaAI</span>
         </div>
 
