@@ -76,7 +76,7 @@ export default function LandingPage() {
       </nav>
 
       {/* ═══ HERO SECTION ═══ */}
-      <section className="relative pt-24 lg:pt-28 pb-16 lg:pb-24 px-4 overflow-hidden">
+      <section className="relative pt-16 lg:pt-20 pb-16 lg:pb-24 px-4 overflow-hidden">
         {/* Background gradient blob (light blue/gray) */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[800px] bg-gradient-to-b from-[#E6F4FF]/60 to-transparent rounded-full blur-[100px] pointer-events-none -z-10" />
 
