@@ -23,7 +23,7 @@ export default function LandingPage() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
-            <div className="flex items-center gap-2.5">
+            <Link href="/" className="flex items-center gap-2.5">
               <img src="/logo.png" alt="VedaAI Logo" className="w-10 h-10 object-contain rounded-xl" />
               <span
                 className="text-2xl font-bold tracking-tight text-[#1A1A1A]"
@@ -31,11 +31,11 @@ export default function LandingPage() {
               >
                 VedaAI
               </span>
-            </div>
+            </Link>
 
             {/* Desktop Nav */}
             <div className="hidden md:flex items-center gap-8 font-medium">
-              <a href="#" className="text-sm text-[#1A1A1A] hover:text-[#FF8000] transition-colors">Home</a>
+              <Link href="/" className="text-sm text-[#1A1A1A] hover:text-[#FF8000] transition-colors">Home</Link>
               <a href="#" className="text-sm text-[#404040] hover:text-[#FF8000] transition-colors">Solutions</a>
               <a href="#" className="text-sm text-[#404040] hover:text-[#FF8000] transition-colors">Teachers</a>
               <a href="#" className="text-sm text-[#404040] hover:text-[#FF8000] transition-colors">About Us</a>
@@ -66,7 +66,7 @@ export default function LandingPage() {
         {/* Mobile Menu */}
         {mobileMenuOpen && (
           <div className="md:hidden bg-white border-t border-gray-100 px-4 py-6 space-y-4 shadow-lg absolute w-full">
-            <a href="#" className="block text-sm font-medium text-[#1A1A1A]" onClick={() => setMobileMenuOpen(false)}>Home</a>
+            <Link href="/" className="block text-sm font-medium text-[#1A1A1A]" onClick={() => setMobileMenuOpen(false)}>Home</Link>
             <a href="#" className="block text-sm font-medium text-[#404040]" onClick={() => setMobileMenuOpen(false)}>Solutions</a>
             <a href="#" className="block text-sm font-medium text-[#404040]" onClick={() => setMobileMenuOpen(false)}>Teachers</a>
             <a href="#" className="block text-sm font-medium text-[#404040]" onClick={() => setMobileMenuOpen(false)}>About Us</a>
