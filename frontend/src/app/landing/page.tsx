@@ -46,10 +46,10 @@ export default function LandingPage() {
             {/* Desktop CTA */}
             <div className="hidden md:flex items-center gap-2">
               <Link
-                href="/sign-up"
+                href="/sign-in"
                 className="text-sm font-semibold bg-[#1A1A1A] hover:bg-black text-white px-6 py-3 rounded-full transition-colors shadow-md"
               >
-                SignIn
+                Sign In
               </Link>
             </div>
 
@@ -70,7 +70,7 @@ export default function LandingPage() {
             <a href="#" className="block text-sm font-medium text-[#404040]" onClick={() => setMobileMenuOpen(false)}>Solutions</a>
             <a href="#" className="block text-sm font-medium text-[#404040]" onClick={() => setMobileMenuOpen(false)}>Teachers</a>
             <a href="#" className="block text-sm font-medium text-[#404040]" onClick={() => setMobileMenuOpen(false)}>About Us</a>
-            <Link href="/sign-up" className="block text-sm text-center font-semibold bg-[#1A1A1A] text-white py-3 rounded-xl mt-4">SignIn</Link>
+            <Link href="/sign-in" className="block text-sm text-center font-semibold bg-[#1A1A1A] text-white py-3 rounded-xl mt-4" onClick={() => setMobileMenuOpen(false)}>Sign In</Link>
           </div>
         )}
       </nav>
