@@ -101,9 +101,8 @@ export default function LandingPage() {
           </h1>
 
           {/* Subtitle */}
-          <p className="text-base sm:text-lg text-[#505050] max-w-2xl mx-auto mb-10 leading-relaxed font-medium">
-            An AI academic system for assessment, teaching, and personalised learning - designed to improve
-            academic outcomes, reduce cost & time, and strengthen institutional credibility.
+          <p className="text-base sm:text-lg text-[#505050] max-w-4xl mx-auto px-4 mb-10 leading-relaxed font-medium">
+            An AI academic system for assessment, teaching, and personalised learning - designed to improve academic outcomes, reduce cost & time, and strengthen institutional credibility.
           </p>
 
           {/* CTAs */}
