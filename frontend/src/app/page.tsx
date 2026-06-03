@@ -238,7 +238,7 @@ export default function AssignmentsPage() {
       </div>
 
       {/* Floating Create Button */}
-      <div className="fixed bottom-24 lg:bottom-8 left-1/2 -translate-x-1/2 lg:left-auto lg:translate-x-0 lg:right-8 z-30">
+      <div className="hidden lg:block fixed bottom-8 right-8 z-30">
         <Link
           href="/create"
           className="inline-flex items-center gap-2 bg-[#1A1A1A] text-white text-sm font-semibold px-6 py-3 rounded-full shadow-lg hover:bg-[#333] transition-colors"
