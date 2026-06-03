@@ -137,9 +137,16 @@ export default function LandingPage() {
                     </div>
                     <span className="font-bold text-lg">VedaAI</span>
                  </div>
-                 <div className="flex gap-4">
-                    <div className="w-24 h-8 bg-gray-100 rounded-full"></div>
-                    <div className="w-8 h-8 bg-gray-100 rounded-full"></div>
+                 <div className="flex gap-4 items-center">
+                    <div className="flex items-center gap-2 text-gray-400">
+                       <span className="w-4 h-4 border-2 border-current rounded-full flex items-center justify-center text-[10px] font-bold">?</span>
+                       <span className="text-sm">🔔</span>
+                    </div>
+                    <div className="flex items-center gap-2 bg-gray-50 px-3 py-1.5 rounded-full border border-gray-200 cursor-pointer">
+                       <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?auto=format&fit=crop&w=100&q=80" alt="Madhur Rastogi" className="w-6 h-6 rounded-full object-cover" />
+                       <span className="text-xs font-semibold text-gray-800">Madhur Rastogi</span>
+                       <span className="text-xs text-gray-500">v</span>
+                    </div>
                  </div>
               </div>
 
@@ -180,10 +187,15 @@ export default function LandingPage() {
                           <div className="text-3xl font-bold mb-1">31.7 hrs</div>
                           <div className="text-[10px] text-gray-400">8.5 hrs more than last month ↗</div>
                        </div>
-                       <div className="flex-1 bg-white rounded-2xl p-5 border border-gray-200 text-gray-800 flex flex-col justify-center shadow-sm">
-                          <div className="text-xs text-gray-500 mb-1 font-medium">Total Assignments Graded</div>
-                          <div className="text-3xl font-bold mb-1 text-gray-900">128</div>
-                          <div className="text-[10px] text-gray-400">Submitted, pending evaluation</div>
+                       <div className="flex-1 bg-white rounded-2xl p-5 border border-gray-200 text-gray-800 flex justify-between shadow-sm relative">
+                          <div className="flex flex-col justify-center">
+                             <div className="text-xs text-gray-500 mb-1 font-medium">Total Assignments Graded</div>
+                             <div className="text-3xl font-bold mb-1 text-gray-900">128</div>
+                             <div className="text-[10px] text-gray-400">Submitted, pending evaluation</div>
+                          </div>
+                          <div className="flex items-center justify-center pl-2">
+                             <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=150&q=80" alt="Illustration" className="w-14 h-14 rounded-full border-4 border-gray-50 shadow-sm" />
+                          </div>
                        </div>
                     </div>
                     
@@ -286,7 +298,10 @@ export default function LandingPage() {
                   {/* Mockup for Dashboard */}
                   <div className="flex justify-between items-center mb-4 opacity-70 group-hover:opacity-100 transition-opacity duration-300">
                      <div className="w-1/3 h-4 bg-gray-200 rounded-full"></div>
-                     <div className="w-8 h-4 bg-gray-200 rounded-full"></div>
+                     <div className="flex items-center gap-1.5">
+                        <div className="w-6 h-2 bg-gray-200 rounded-full"></div>
+                        <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?auto=format&fit=crop&w=100&q=80" alt="Profile" className="w-4 h-4 rounded-full object-cover" />
+                     </div>
                   </div>
                   <div className="flex gap-2 mb-4">
                      <div className="flex-1 bg-gray-800 rounded-xl p-2 h-16 group-hover:scale-[1.02] transition-transform duration-300 delay-100"></div>
@@ -307,26 +322,40 @@ export default function LandingPage() {
             <div className="group bg-white rounded-3xl p-8 border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
                <div className="bg-gray-50 rounded-2xl aspect-[4/3] mb-8 border border-gray-100 overflow-hidden relative flex flex-col p-6">
                   {/* Mockup for Student Search */}
-                  <div className="w-full h-10 bg-white border border-gray-200 rounded-lg mb-6 flex items-center px-3 group-hover:border-orange-300 transition-colors duration-300">
+                  <div className="w-full h-10 bg-white border border-gray-200 rounded-lg mb-4 flex items-center px-3 group-hover:border-orange-300 transition-colors duration-300">
                      <span className="text-sm text-gray-800">Aarav</span>
                      <span className="ml-1 w-[2px] h-4 bg-orange-500 animate-pulse"></span>
                   </div>
-                  <div className="text-xs text-gray-400 mb-2">Search results</div>
+                  <div className="text-xs text-gray-400 mb-3">Recent searches</div>
+                  
+                  {/* Student 1 */}
                   <div className="flex items-center gap-3 mb-4 opacity-80 group-hover:opacity-100 group-hover:translate-x-2 transition-all duration-300 delay-100">
-                     <div className="w-10 h-10 bg-gray-200 rounded-full"></div>
+                     <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=100&q=80" alt="Aarav Sharma" className="w-10 h-10 rounded-full object-cover border border-gray-200 shadow-sm" />
                      <div className="flex-1">
                         <div className="text-sm font-bold text-gray-800">Aarav Sharma</div>
                         <div className="text-xs text-gray-500">Class 10</div>
                      </div>
                      <div className="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-medium">High</div>
                   </div>
-                  <div className="flex items-center gap-3 opacity-80 group-hover:opacity-100 group-hover:translate-x-2 transition-all duration-300 delay-200">
-                     <div className="w-10 h-10 bg-gray-200 rounded-full"></div>
+                  
+                  {/* Student 2 */}
+                  <div className="flex items-center gap-3 mb-4 opacity-80 group-hover:opacity-100 group-hover:translate-x-2 transition-all duration-300 delay-150">
+                     <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&q=80" alt="Priya Patel" className="w-10 h-10 rounded-full object-cover border border-gray-200 shadow-sm" />
                      <div className="flex-1">
-                        <div className="text-sm font-bold text-gray-800">Aarav Singh</div>
-                        <div className="text-xs text-gray-500">Class 8</div>
+                        <div className="text-sm font-bold text-gray-800">Priya Patel</div>
+                        <div className="text-xs text-gray-500">Class 9</div>
                      </div>
                      <div className="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-xs font-medium">Average</div>
+                  </div>
+
+                  {/* Student 3 */}
+                  <div className="flex items-center gap-3 opacity-40 group-hover:opacity-60 group-hover:translate-x-2 transition-all duration-300 delay-200 mask-image:linear-gradient(to_bottom,black,transparent)">
+                     <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80" alt="Rahul Kumar" className="w-10 h-10 rounded-full object-cover border border-gray-200 shadow-sm" />
+                     <div className="flex-1">
+                        <div className="text-sm font-bold text-gray-800">Rahul Kumar</div>
+                        <div className="text-xs text-gray-500">Class 10</div>
+                     </div>
+                     <div className="px-3 py-1 bg-green-50 text-green-700/50 rounded-full text-xs font-medium">High</div>
                   </div>
                </div>
                <h3 className="text-xl font-bold mb-3 text-[#1A1A1A] group-hover:text-[#FF8000] transition-colors">Access Student Performance Instantly</h3>
