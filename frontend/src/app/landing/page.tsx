@@ -119,27 +119,45 @@ export default function LandingPage() {
           </div>
           
           {/* ═══ TRUSTED BY SECTION ═══ */}
-          <div className="text-center pb-8 border-b border-gray-100/0">
+          <div className="text-center pb-8 border-b border-gray-100/0 overflow-hidden w-full relative">
             <p className="text-sm font-medium text-[#4A6482] mb-8">Trusted and Backed by</p>
-            <div className="flex flex-wrap justify-center items-center gap-8 sm:gap-12 md:gap-16 opacity-70 grayscale hover:grayscale-0 transition-all duration-500">
-              <div className="flex items-center gap-2 font-bold text-xl text-gray-400">
-                <span className="w-6 h-6 rounded bg-gray-400 block"></span> Startups
+            
+            <div className="relative w-[150%] md:w-full flex overflow-hidden group left-1/2 -translate-x-1/2">
+              {/* Fade masks for smooth entry/exit */}
+              <div className="absolute top-0 left-0 w-24 h-full bg-gradient-to-r from-[#FDFDFD] to-transparent z-10 pointer-events-none"></div>
+              <div className="absolute top-0 right-0 w-24 h-full bg-gradient-to-l from-[#FDFDFD] to-transparent z-10 pointer-events-none"></div>
+              
+              <div className="flex w-max animate-[scrollLtr_30s_linear_infinite] group-hover:[animation-play-state:paused]">
+                {/* We map the logos array twice to create a seamless infinite loop */}
+                {[1, 2].map((set) => (
+                  <div key={set} className="flex justify-center items-center gap-12 sm:gap-16 md:gap-24 px-6 sm:px-8 opacity-70 transition-all duration-500">
+                    <div className="flex items-center gap-2 font-bold text-xl text-gray-400 hover:text-gray-700 hover:scale-105 transition-all">
+                      <span className="w-6 h-6 rounded bg-current block"></span> Startups
+                    </div>
+                    <div className="flex items-center gap-2 font-bold text-xl text-gray-400 hover:text-gray-700 hover:scale-105 transition-all">
+                      aws <span className="font-light">startups</span>
+                    </div>
+                    <div className="flex items-center gap-2 font-bold text-xl text-gray-400 hover:text-gray-700 hover:scale-105 transition-all">
+                      <span className="w-6 h-6 bg-current rounded-sm block"></span> Microsoft <span className="font-light text-sm mt-1 block">for Startups</span>
+                    </div>
+                    <div className="flex items-center gap-2 font-bold text-lg text-gray-400 hover:text-gray-700 hover:scale-105 transition-all">
+                      <div className="grid grid-cols-3 gap-0.5">
+                         <div className="w-1.5 h-1.5 bg-current"></div><div className="w-1.5 h-1.5 bg-current"></div><div className="w-1.5 h-1.5 bg-current"></div>
+                         <div className="w-1.5 h-1.5 bg-current"></div><div className="w-1.5 h-1.5 bg-transparent"></div><div className="w-1.5 h-1.5 bg-current"></div>
+                         <div className="w-1.5 h-1.5 bg-current"></div><div className="w-1.5 h-1.5 bg-current"></div><div className="w-1.5 h-1.5 bg-current"></div>
+                      </div>
+                      <div className="text-left leading-tight"><span className="block text-sm">Perplexity</span><span className="block text-[10px] font-normal">AI Business Fellowship</span></div>
+                    </div>
+                    <div className="font-bold text-2xl text-gray-400 hover:text-gray-700 hover:scale-105 transition-all">Google</div>
+                  </div>
+                ))}
               </div>
-              <div className="flex items-center gap-2 font-bold text-xl text-gray-400">
-                aws <span className="font-light">startups</span>
-              </div>
-              <div className="flex items-center gap-2 font-bold text-xl text-gray-400">
-                <span className="w-6 h-6 bg-gray-400 rounded-sm block"></span> Microsoft <span className="font-light text-sm mt-1 block">for Startups</span>
-              </div>
-              <div className="flex items-center gap-2 font-bold text-lg text-gray-400">
-                <div className="grid grid-cols-3 gap-0.5">
-                   <div className="w-1.5 h-1.5 bg-gray-400"></div><div className="w-1.5 h-1.5 bg-gray-400"></div><div className="w-1.5 h-1.5 bg-gray-400"></div>
-                   <div className="w-1.5 h-1.5 bg-gray-400"></div><div className="w-1.5 h-1.5 bg-transparent"></div><div className="w-1.5 h-1.5 bg-gray-400"></div>
-                   <div className="w-1.5 h-1.5 bg-gray-400"></div><div className="w-1.5 h-1.5 bg-gray-400"></div><div className="w-1.5 h-1.5 bg-gray-400"></div>
-                </div>
-                <div className="text-left leading-tight"><span className="block text-sm">Perplexity</span><span className="block text-[10px] font-normal">AI Business Fellowship</span></div>
-              </div>
-              <div className="font-bold text-2xl text-gray-400">Google</div>
+              <style dangerouslySetInnerHTML={{__html: `
+                @keyframes scrollLtr {
+                  0% { transform: translateX(-50%); }
+                  100% { transform: translateX(0); }
+                }
+              `}} />
             </div>
           </div>
         </div>
