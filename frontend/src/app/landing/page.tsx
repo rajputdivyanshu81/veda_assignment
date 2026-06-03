@@ -281,35 +281,38 @@ export default function LandingPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Feature Card 1 */}
-            <div className="bg-white rounded-3xl p-8 border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+            <div className="group bg-white rounded-3xl p-8 border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
                <div className="bg-gray-50 rounded-2xl aspect-[4/3] mb-8 border border-gray-100 overflow-hidden relative flex flex-col p-4">
                   {/* Mockup for Dashboard */}
-                  <div className="flex justify-between items-center mb-4">
+                  <div className="flex justify-between items-center mb-4 opacity-70 group-hover:opacity-100 transition-opacity duration-300">
                      <div className="w-1/3 h-4 bg-gray-200 rounded-full"></div>
                      <div className="w-8 h-4 bg-gray-200 rounded-full"></div>
                   </div>
                   <div className="flex gap-2 mb-4">
-                     <div className="flex-1 bg-gray-800 rounded-xl p-2 h-16"></div>
-                     <div className="flex-1 bg-gray-800 rounded-xl p-2 h-16"></div>
-                     <div className="flex-1 bg-white border border-gray-200 rounded-xl p-2 h-16"></div>
+                     <div className="flex-1 bg-gray-800 rounded-xl p-2 h-16 group-hover:scale-[1.02] transition-transform duration-300 delay-100"></div>
+                     <div className="flex-1 bg-gray-800 rounded-xl p-2 h-16 group-hover:scale-[1.02] transition-transform duration-300 delay-150"></div>
+                     <div className="flex-1 bg-white border border-gray-200 rounded-xl p-2 h-16 group-hover:scale-[1.02] transition-transform duration-300 delay-200"></div>
                   </div>
-                  <div className="flex-1 bg-white border border-gray-200 rounded-xl"></div>
+                  <div className="flex-1 bg-white border border-gray-200 rounded-xl relative overflow-hidden group-hover:shadow-inner transition-shadow duration-300">
+                     <div className="absolute left-0 top-0 h-full bg-orange-500/10 w-0 group-hover:w-full transition-all duration-1000 ease-out"></div>
+                  </div>
                </div>
-               <h3 className="text-xl font-bold mb-3 text-[#1A1A1A]">Turn Data into Actionable Insights</h3>
+               <h3 className="text-xl font-bold mb-3 text-[#1A1A1A] group-hover:text-[#FF8000] transition-colors">Turn Data into Actionable Insights</h3>
                <p className="text-gray-500 leading-relaxed text-sm">
                  Visualize class trends, identify learning gaps, and make data-backed academic decisions.
                </p>
             </div>
 
             {/* Feature Card 2 */}
-            <div className="bg-white rounded-3xl p-8 border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+            <div className="group bg-white rounded-3xl p-8 border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
                <div className="bg-gray-50 rounded-2xl aspect-[4/3] mb-8 border border-gray-100 overflow-hidden relative flex flex-col p-6">
                   {/* Mockup for Student Search */}
-                  <div className="w-full h-10 bg-white border border-gray-200 rounded-lg mb-6 flex items-center px-3">
+                  <div className="w-full h-10 bg-white border border-gray-200 rounded-lg mb-6 flex items-center px-3 group-hover:border-orange-300 transition-colors duration-300">
                      <span className="text-sm text-gray-800">Aarav</span>
+                     <span className="ml-1 w-[2px] h-4 bg-orange-500 animate-pulse"></span>
                   </div>
                   <div className="text-xs text-gray-400 mb-2">Search results</div>
-                  <div className="flex items-center gap-3 mb-4">
+                  <div className="flex items-center gap-3 mb-4 opacity-80 group-hover:opacity-100 group-hover:translate-x-2 transition-all duration-300 delay-100">
                      <div className="w-10 h-10 bg-gray-200 rounded-full"></div>
                      <div className="flex-1">
                         <div className="text-sm font-bold text-gray-800">Aarav Sharma</div>
@@ -317,7 +320,7 @@ export default function LandingPage() {
                      </div>
                      <div className="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-medium">High</div>
                   </div>
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-3 opacity-80 group-hover:opacity-100 group-hover:translate-x-2 transition-all duration-300 delay-200">
                      <div className="w-10 h-10 bg-gray-200 rounded-full"></div>
                      <div className="flex-1">
                         <div className="text-sm font-bold text-gray-800">Aarav Singh</div>
@@ -326,60 +329,71 @@ export default function LandingPage() {
                      <div className="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-xs font-medium">Average</div>
                   </div>
                </div>
-               <h3 className="text-xl font-bold mb-3 text-[#1A1A1A]">Access Student Performance Instantly</h3>
+               <h3 className="text-xl font-bold mb-3 text-[#1A1A1A] group-hover:text-[#FF8000] transition-colors">Access Student Performance Instantly</h3>
                <p className="text-gray-500 leading-relaxed text-sm">
                  Search any student and instantly view grades, feedback, and performance indicators.
                </p>
             </div>
 
             {/* Feature Card 3 */}
-            <div className="bg-white rounded-3xl p-8 border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+            <div className="group bg-white rounded-3xl p-8 border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
                <div className="bg-gray-50 rounded-2xl aspect-[4/3] mb-8 border border-gray-100 overflow-hidden relative flex items-center justify-center p-6">
                   {/* Mockup for Grading */}
-                  <div className="relative w-3/4 h-full bg-white shadow-sm border border-gray-200 p-4 rounded text-[8px] text-gray-400 leading-tight">
-                     <div className="w-full h-2 bg-gray-200 mb-2 rounded"></div>
-                     <div className="w-5/6 h-2 bg-gray-200 mb-2 rounded"></div>
-                     <div className="w-full h-2 bg-gray-200 mb-4 rounded"></div>
+                  <div className="relative w-3/4 h-full bg-white shadow-sm border border-gray-200 p-4 rounded text-[8px] text-gray-400 leading-tight group-hover:shadow-md transition-shadow duration-300">
+                     <div className="w-full h-2 bg-gray-200 mb-2 rounded group-hover:bg-gray-300 transition-colors"></div>
+                     <div className="w-5/6 h-2 bg-gray-200 mb-2 rounded group-hover:bg-gray-300 transition-colors"></div>
+                     <div className="w-full h-2 bg-gray-200 mb-4 rounded group-hover:bg-gray-300 transition-colors"></div>
+                     {/* Custom inline style for scanner animation */}
+                     <style dangerouslySetInnerHTML={{__html: `
+                       @keyframes scanMove {
+                         0% { left: 10%; }
+                         50% { left: 90%; }
+                         100% { left: 10%; }
+                       }
+                       .animate-scan {
+                         animation: scanMove 3s ease-in-out infinite;
+                       }
+                     `}} />
                      {/* Scanner line */}
-                     <div className="absolute top-0 bottom-0 left-1/2 w-0.5 bg-orange-500 shadow-[0_0_8px_2px_rgba(255,128,0,0.5)]"></div>
+                     <div className="absolute top-0 bottom-0 w-0.5 bg-orange-500 shadow-[0_0_8px_2px_rgba(255,128,0,0.5)] animate-scan"></div>
                      {/* Scanner brackets */}
-                     <div className="absolute top-2 left-2 w-4 h-4 border-t-2 border-l-2 border-orange-500 rounded-tl-lg"></div>
-                     <div className="absolute top-2 right-2 w-4 h-4 border-t-2 border-r-2 border-orange-500 rounded-tr-lg"></div>
-                     <div className="absolute bottom-2 left-2 w-4 h-4 border-b-2 border-l-2 border-orange-500 rounded-bl-lg"></div>
-                     <div className="absolute bottom-2 right-2 w-4 h-4 border-b-2 border-r-2 border-orange-500 rounded-br-lg"></div>
+                     <div className="absolute top-2 left-2 w-4 h-4 border-t-4 border-l-4 border-orange-500 rounded-tl-lg group-hover:scale-110 transition-transform"></div>
+                     <div className="absolute top-2 right-2 w-4 h-4 border-t-4 border-r-4 border-orange-500 rounded-tr-lg group-hover:scale-110 transition-transform"></div>
+                     <div className="absolute bottom-2 left-2 w-4 h-4 border-b-4 border-l-4 border-orange-500 rounded-bl-lg group-hover:scale-110 transition-transform"></div>
+                     <div className="absolute bottom-2 right-2 w-4 h-4 border-b-4 border-r-4 border-orange-500 rounded-br-lg group-hover:scale-110 transition-transform"></div>
                   </div>
                </div>
-               <h3 className="text-xl font-bold mb-3 text-[#1A1A1A]">AI-powered grading in seconds</h3>
+               <h3 className="text-xl font-bold mb-3 text-[#1A1A1A] group-hover:text-[#FF8000] transition-colors">AI-powered grading in seconds</h3>
                <p className="text-gray-500 leading-relaxed text-sm">
                  Evaluate entire class submissions accurately while providing detailed student-specific feedback.
                </p>
             </div>
 
             {/* Feature Card 4 */}
-            <div className="bg-white rounded-3xl p-8 border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+            <div className="group bg-white rounded-3xl p-8 border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
                <div className="bg-gray-50 rounded-2xl aspect-[4/3] mb-8 border border-gray-100 overflow-hidden relative flex flex-col p-6">
                   {/* Mockup for Stats */}
                   <div className="text-xs font-bold text-center mb-4">Overall Class Performance Summary</div>
                   <div className="flex gap-2">
-                     <div className="flex-1 bg-gray-800 rounded-xl p-4 flex flex-col justify-between">
-                        <div className="text-[10px] text-gray-400">Submissions</div>
-                        <div className="w-full h-12 relative mt-2">
-                           <div className="absolute bottom-0 w-full h-full border-t-4 border-l-4 border-r-4 border-orange-500 rounded-t-full"></div>
+                     <div className="flex-1 bg-gray-800 rounded-xl p-4 flex flex-col justify-between overflow-hidden relative">
+                        <div className="text-[10px] text-gray-400 z-10">Submissions</div>
+                        <div className="w-full h-12 relative mt-2 z-10">
+                           <div className="absolute bottom-0 w-full h-full border-t-4 border-l-4 border-r-4 border-orange-500 rounded-t-full origin-bottom scale-y-0 group-hover:scale-y-100 transition-transform duration-700 ease-out delay-100"></div>
                         </div>
                      </div>
                      <div className="flex-1 grid grid-cols-1 gap-2">
-                        <div className="bg-white border border-gray-200 rounded-xl p-3 text-center">
+                        <div className="bg-white border border-gray-200 rounded-xl p-3 text-center group-hover:border-green-200 transition-colors duration-300">
                            <div className="text-xl font-bold text-green-500">82%</div>
                            <div className="text-[10px] text-gray-500">Average Score</div>
                         </div>
-                        <div className="bg-white border border-gray-200 rounded-xl p-3 text-center">
+                        <div className="bg-white border border-gray-200 rounded-xl p-3 text-center group-hover:border-red-200 transition-colors duration-300 delay-75">
                            <div className="text-xl font-bold text-red-500">95%</div>
                            <div className="text-[10px] text-gray-500">Top Score</div>
                         </div>
                      </div>
                   </div>
                </div>
-               <h3 className="text-xl font-bold mb-3 text-[#1A1A1A]">Deep Performance Analytics</h3>
+               <h3 className="text-xl font-bold mb-3 text-[#1A1A1A] group-hover:text-[#FF8000] transition-colors">Deep Performance Analytics</h3>
                <p className="text-gray-500 leading-relaxed text-sm">
                  Monitor overall class health, identify top performers, and support struggling students proactively.
                </p>
