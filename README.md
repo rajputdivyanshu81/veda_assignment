@@ -19,10 +19,14 @@ An AI-powered assessment creator that allows teachers to create assignments, gen
 
 - **Create Assignment** – Upload reference material, set due dates, configure question types with count and marks per type
 - **AI Question Paper Generation** – Background job processing via BullMQ, real-time progress via WebSockets
-- **View Generated Paper** – Structured question paper with sections, difficulty tags, and answer key
-- **Download as PDF** – Professional print-ready PDF export
-- **Assignment Management** – List, search, filter, and delete assignments
-- **Responsive Design** – Mobile-first with sidebar navigation and bottom nav
+- **View Generated Paper** – Structured question paper with sections, difficulty tags, and a professional academic layout
+- **Download as PDF** – Professional print-ready PDF export with custom student grid and marks layout
+- **Assignment Management** – List, search, filter, and delete assignments with real-time feedback
+- **My Library Workspace** – Access all completed assessment papers and view uploaded study references by tab selection
+- **Dynamic Notification Badges** – Sidebar counts are synced in real-time with the database and auto-clear when visited
+- **Mobile Navigation Drawer** – Responsive header layout with a hamburger-activated slide-over drawer
+- **Settings Workspace** – Customize school credentials (logo, avatar, initials, location) stored in localStorage and rendered system-wide
+- **Responsive & Premium Layout** – Avoids overflow and text wrapping issues on small mobile screens
 
 ## Project Structure
 
