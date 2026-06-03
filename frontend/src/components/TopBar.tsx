@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import Link from 'next/link';
 import {
@@ -33,6 +33,19 @@ export default function TopBar() {
     schoolPic: '',
   });
 
+  const [counts, setCounts] = useState<{ assignments: number; library: number }>({
+    assignments: 0,
+    library: 0,
+  });
+  const [lastSeen, setLastSeen] = useState<{ assignments: number; library: number }>({
+    assignments: 0,
+    library: 0,
+  });
+  const [isNotificationsOpen, setIsNotificationsOpen] = useState(false);
+  const notifRef = useRef<HTMLDivElement>(null);
+
+  const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+
   useEffect(() => {
     const loadProfileData = () => {
       setProfileData({
@@ -46,6 +59,79 @@ export default function TopBar() {
     window.addEventListener('settings-updated', loadProfileData);
     return () => window.removeEventListener('settings-updated', loadProfileData);
   }, []);
+
+  useEffect(() => {
+    const fetchCounts = async () => {
+      const token = typeof window !== 'undefined' ? localStorage.getItem('vedaai_token') : null;
+      try {
+        const res = await fetch(`${API_URL}/api/assignments`, {
+          headers: token ? { Authorization: `Bearer ${token}` } : {},
+        });
+        if (res.ok) {
+          const data = await res.json();
+          const items = Array.isArray(data) ? data : data.assignments || [];
+          const completed = items.filter((a: any) => a.status === 'completed').length;
+          
+          setCounts({
+            assignments: items.length,
+            library: completed,
+          });
+        }
+      } catch (err) {
+        console.error('Failed to fetch counts in TopBar:', err);
+      }
+    };
+
+    const loadLastSeen = () => {
+      setLastSeen({
+        assignments: parseInt(localStorage.getItem('vedaai_last_seen_assignments') || '0', 10),
+        library: parseInt(localStorage.getItem('vedaai_last_seen_library') || '0', 10),
+      });
+    };
+
+    loadLastSeen();
+    fetchCounts();
+    
+    window.addEventListener('assignments-changed', fetchCounts);
+    return () => {
+      window.removeEventListener('assignments-changed', fetchCounts);
+    };
+  }, [pathname, API_URL]);
+
+  useEffect(() => {
+    if (counts.assignments > 0 && pathname === '/') {
+      localStorage.setItem('vedaai_last_seen_assignments', counts.assignments.toString());
+      setLastSeen(prev => ({ ...prev, assignments: counts.assignments }));
+    }
+    if (counts.library > 0 && pathname === '/library') {
+      localStorage.setItem('vedaai_last_seen_library', counts.library.toString());
+      setLastSeen(prev => ({ ...prev, library: counts.library }));
+    }
+  }, [pathname, counts]);
+
+  useEffect(() => {
+    function handleClickOutside(e: MouseEvent) {
+      if (notifRef.current && !notifRef.current.contains(e.target as Node)) {
+        setIsNotificationsOpen(false);
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  const unreadAssignments = pathname === '/' ? 0 : Math.max(0, counts.assignments - lastSeen.assignments);
+  const unreadLibrary = pathname === '/library' ? 0 : Math.max(0, counts.library - lastSeen.library);
+  const hasUnread = unreadAssignments > 0 || unreadLibrary > 0;
+
+  const markAllAsRead = () => {
+    localStorage.setItem('vedaai_last_seen_assignments', counts.assignments.toString());
+    localStorage.setItem('vedaai_last_seen_library', counts.library.toString());
+    setLastSeen({
+      assignments: counts.assignments,
+      library: counts.library,
+    });
+    setIsNotificationsOpen(false);
+  };
 
   return (
     <>
@@ -74,10 +160,69 @@ export default function TopBar() {
         {/* Right side */}
         <div className="flex items-center gap-3 md:gap-4">
           {/* Notification bell */}
-          <button className="relative text-[#6B7280] hover:text-[#1A1A1A] transition-colors">
-            <Bell className="w-5 h-5" />
-            <span className="absolute -top-0.5 -right-0.5 w-2 h-2 bg-[#E8612D] rounded-full" />
-          </button>
+          <div className="relative" ref={notifRef}>
+            <button
+              onClick={() => setIsNotificationsOpen(!isNotificationsOpen)}
+              className="relative p-1.5 rounded-lg hover:bg-gray-50 text-[#6B7280] hover:text-[#1A1A1A] transition-all duration-200"
+              aria-label="Notifications"
+            >
+              <Bell className="w-5 h-5" />
+              {hasUnread && (
+                <span className="absolute top-1 right-1 w-2.5 h-2.5 bg-[#E8612D] border-2 border-white rounded-full animate-pulse" />
+              )}
+            </button>
+
+            {/* Notification Dropdown Panel */}
+            {isNotificationsOpen && (
+              <div className="absolute right-0 mt-2 w-72 bg-white border border-[#E5E7EB] rounded-xl shadow-lg py-2 z-50 animate-in fade-in slide-in-from-top-1 duration-200">
+                <div className="flex items-center justify-between px-4 py-1.5 border-b border-gray-100">
+                  <span className="text-xs font-bold text-gray-800">Notifications</span>
+                  {hasUnread && (
+                    <button
+                      onClick={markAllAsRead}
+                      className="text-[10px] font-bold text-[#E8612D] hover:underline"
+                    >
+                      Mark all as read
+                    </button>
+                  )}
+                </div>
+                <div className="max-h-60 overflow-y-auto px-4 py-2 space-y-2">
+                  {!hasUnread ? (
+                    <p className="text-xs text-gray-500 text-center py-4">All caught up! No new notifications.</p>
+                  ) : (
+                    <>
+                      {unreadAssignments > 0 && (
+                        <div className="flex flex-col gap-0.5 text-xs text-gray-700 bg-gray-50 p-2 rounded-lg border border-gray-100">
+                          <p className="font-semibold text-gray-900">New Assignments</p>
+                          <p className="text-[11px] text-gray-500">You have {unreadAssignments} new assignment{unreadAssignments > 1 ? 's' : ''} to grade.</p>
+                          <Link
+                            href="/"
+                            onClick={() => setIsNotificationsOpen(false)}
+                            className="text-[10px] text-[#E8612D] font-semibold mt-1 hover:underline"
+                          >
+                            View assignments &rarr;
+                          </Link>
+                        </div>
+                      )}
+                      {unreadLibrary > 0 && (
+                        <div className="flex flex-col gap-0.5 text-xs text-gray-700 bg-gray-50 p-2 rounded-lg border border-gray-100">
+                          <p className="font-semibold text-gray-900">New Library Items</p>
+                          <p className="text-[11px] text-gray-500">{unreadLibrary} completed question paper{unreadLibrary > 1 ? 's are' : ' is'} ready in your library.</p>
+                          <Link
+                            href="/library"
+                            onClick={() => setIsNotificationsOpen(false)}
+                            className="text-[10px] text-[#E8612D] font-semibold mt-1 hover:underline"
+                          >
+                            Go to Library &rarr;
+                          </Link>
+                        </div>
+                      )}
+                    </>
+                  )}
+                </div>
+              </div>
+            )}
+          </div>
 
           {/* User avatar & name */}
           <div className="flex items-center">
