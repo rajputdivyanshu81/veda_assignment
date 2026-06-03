@@ -18,7 +18,7 @@ let ioInstance: Server | null = null;
 // Allow CORS from frontend
 const corsOptions = {
   origin: process.env.FRONTEND_URL || 'http://localhost:3000',
-  methods: ['GET', 'POST'],
+  methods: ['GET', 'POST', 'DELETE'],
   credentials: true,
 };
 

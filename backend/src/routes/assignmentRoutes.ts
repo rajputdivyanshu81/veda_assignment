@@ -6,13 +6,44 @@ import PDFDocument from 'pdfkit';
 
 const router = Router();
 
+// List all assignments
+router.get('/assignments', async (req: Request, res: Response) => {
+  try {
+    const assignments = await Assignment.find().sort({ createdAt: -1 });
+    res.json(assignments);
+  } catch (error: any) {
+    console.error('[Routes] Error listing assignments:', error);
+    res.status(500).json({ error: error.message || 'Server error' });
+  }
+});
+
+// Delete an assignment
+router.delete('/assignments/:id', async (req: Request, res: Response) => {
+  try {
+    const { id } = req.params;
+    const assignment = await Assignment.findById(id);
+    if (!assignment) {
+      return res.status(404).json({ error: 'Assignment not found' });
+    }
+    // Also delete the associated question paper
+    if (assignment.resultId) {
+      await QuestionPaper.findByIdAndDelete(assignment.resultId);
+    }
+    await Assignment.findByIdAndDelete(id);
+    res.json({ message: 'Assignment deleted' });
+  } catch (error: any) {
+    console.error('[Routes] Error deleting assignment:', error);
+    res.status(500).json({ error: error.message || 'Server error' });
+  }
+});
+
 // Create new assignment & enqueue generation job
 router.post('/assignments', async (req: Request, res: Response) => {
   try {
-    const { title, dueDate, questionTypes, totalQuestions, totalMarks, instructions, fileName, fileContent } = req.body;
+    const { title, dueDate, questionTypes, questionRows, totalQuestions, totalMarks, instructions, fileName, fileContent } = req.body;
 
     // Simple validation
-    if (!title || !dueDate || !questionTypes || !totalQuestions || !totalMarks) {
+    if (!title || !dueDate || !totalQuestions || !totalMarks) {
       return res.status(400).json({ error: 'Missing required fields' });
     }
 
@@ -20,16 +51,19 @@ router.post('/assignments', async (req: Request, res: Response) => {
       return res.status(400).json({ error: 'Questions and Marks must be greater than zero' });
     }
 
+    // Derive questionTypes from questionRows if not provided
+    const derivedTypes = questionTypes || (questionRows ? questionRows.map((r: any) => r.type) : []);
+
     // Create assignment entry
     const assignment = new Assignment({
       title,
       dueDate: new Date(dueDate),
-      questionTypes,
+      questionTypes: derivedTypes,
+      questionRows: questionRows || [],
       totalQuestions,
       totalMarks,
       instructions,
       fileName,
-      // If file content is sent, we store it in standard text
       fileUrl: fileContent ? 'stored-locally' : undefined,
       status: 'pending'
     });

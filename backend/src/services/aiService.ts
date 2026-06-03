@@ -1,9 +1,16 @@
 import Groq from 'groq-sdk';
 import { ISection } from '../models/QuestionPaper';
 
+export interface QuestionRowParam {
+  type: string;
+  count: number;
+  marks: number;
+}
+
 export interface GenerateParams {
   title: string;
   questionTypes: string[];
+  questionRows?: QuestionRowParam[];
   totalQuestions: number;
   totalMarks: number;
   instructions?: string;
@@ -53,16 +60,25 @@ Key rules:
 4. Distribute question difficulty (Easy, Moderate, Hard) logically across the paper.
 5. Do not include markdown formatting tags (like \`\`\`json) in your raw output if possible, just return raw JSON. We will parse it directly.`;
 
+  // Build per-type breakdown for the prompt
+  let typeBreakdown = '';
+  if (params.questionRows && params.questionRows.length > 0) {
+    typeBreakdown = params.questionRows
+      .map(r => `  - ${r.type}: ${r.count} questions, ${r.marks} marks each (total ${r.count * r.marks} marks)`)
+      .join('\n');
+  }
+
   const userPrompt = `
 Generate a question paper with the following criteria:
 - **Exam Title:** ${params.title}
 - **Question Types Allowed:** ${params.questionTypes.join(', ')}
 - **Total Questions Count:** ${params.totalQuestions}
 - **Total Marks:** ${params.totalMarks}
+${typeBreakdown ? `- **Per-Type Breakdown:**\n${typeBreakdown}` : ''}
 - **Additional Instructions:** ${params.instructions || 'None'}
 ${params.fileText ? `- **Reference Document Content:** ${params.fileText}` : ''}
 
-Generate challenging and relevant academic questions. Make sure the output is a single valid JSON object containing the "sections" array.`;
+Generate challenging and relevant academic questions. Create one section per question type. Make sure the output is a single valid JSON object containing the "sections" array.`;
 
   try {
     const chatCompletion = await groq.chat.completions.create({

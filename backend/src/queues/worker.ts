@@ -50,6 +50,7 @@ export const startWorker = () => {
         const sections = await generateQuestionPaper({
           title: assignment.title,
           questionTypes: assignment.questionTypes,
+          questionRows: assignment.questionRows || [],
           totalQuestions: assignment.totalQuestions,
           totalMarks: assignment.totalMarks,
           instructions: assignment.instructions,
