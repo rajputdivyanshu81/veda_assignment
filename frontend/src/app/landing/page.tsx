@@ -76,7 +76,7 @@ export default function LandingPage() {
       </nav>
 
       {/* ═══ HERO SECTION ═══ */}
-      <section className="relative pt-16 lg:pt-20 pb-16 lg:pb-24 px-4 overflow-hidden">
+      <section className="relative pt-16 lg:pt-20 pb-8 lg:pb-12 px-4 overflow-hidden">
         {/* Background gradient blob (light blue/gray) */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[800px] bg-gradient-to-b from-[#E6F4FF]/60 to-transparent rounded-full blur-[100px] pointer-events-none -z-10" />
 
@@ -106,7 +106,7 @@ export default function LandingPage() {
           </p>
 
           {/* CTAs */}
-          <div className="flex flex-col items-center justify-center mb-16">
+          <div className="flex flex-col items-center justify-center mb-8">
             <Link
               href="/sign-in"
               className="group inline-flex items-center gap-2 bg-[#1A1A1A] hover:bg-black text-white font-semibold px-6 py-2.5 rounded-full text-sm transition-all shadow-lg hover:shadow-xl"
