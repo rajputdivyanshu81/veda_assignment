@@ -416,9 +416,65 @@ export default function LandingPage() {
         </div>
       </section>
       
-      {/* ═══ SIMPLE FOOTER ═══ */}
-      <footer className="py-8 text-center text-sm text-gray-400">
-         © 2025 VedaAI. All rights reserved.
+      {/* ═══ FOOTER ═══ */}
+      <footer className="pt-16 pb-8 px-4 bg-[#FDFDFD] relative overflow-hidden">
+        <div className="max-w-6xl mx-auto">
+          {/* Top section with logo and links */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16 relative z-10">
+            {/* Logo & Tagline */}
+            <div>
+              <div className="w-12 h-12 rounded-xl bg-[#1A1A1A] flex items-center justify-center mb-4">
+                <span className="text-white font-black text-2xl leading-none">V</span>
+              </div>
+              <h3 className="font-bold text-[#1A1A1A] text-lg mb-1" style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }}>VedaAI</h3>
+              <p className="text-[#888888] text-sm">Grade assignments in minutes not in hours</p>
+            </div>
+
+            {/* Links Column */}
+            <div className="flex flex-col gap-3">
+              <h4 className="text-[#888888] text-sm mb-1">Links</h4>
+              <a href="#" className="text-[#1A1A1A] text-sm font-medium hover:text-[#FF8000] transition-colors">Home</a>
+              <a href="#" className="text-[#1A1A1A] text-sm font-medium hover:text-[#FF8000] transition-colors">Solutions</a>
+              <a href="#" className="text-[#1A1A1A] text-sm font-medium hover:text-[#FF8000] transition-colors">About Us</a>
+              <a href="#" className="text-[#1A1A1A] text-sm font-medium hover:text-[#FF8000] transition-colors">Career</a>
+              <a href="#" className="text-[#1A1A1A] text-sm font-medium hover:text-[#FF8000] transition-colors">Blogs</a>
+              <a href="#" className="text-[#1A1A1A] text-sm font-medium hover:text-[#FF8000] transition-colors">For Teachers</a>
+              <a href="#" className="text-[#1A1A1A] text-sm font-medium hover:text-[#FF8000] transition-colors">Be a Partner</a>
+            </div>
+
+            {/* Connect Column */}
+            <div className="flex flex-col gap-3">
+              <h4 className="text-[#888888] text-sm mb-1">Connect</h4>
+              <a href="#" className="text-[#1A1A1A] text-sm font-medium hover:text-[#FF8000] transition-colors">LinkedIn</a>
+              <a href="#" className="text-[#1A1A1A] text-sm font-medium hover:text-[#FF8000] transition-colors">X</a>
+              <a href="#" className="text-[#1A1A1A] text-sm font-medium hover:text-[#FF8000] transition-colors">Instagram</a>
+            </div>
+          </div>
+
+          {/* Giant Watermark Text */}
+          <div className="w-full flex justify-center items-center mb-8 pointer-events-none select-none overflow-hidden">
+            <span 
+              className="text-[25vw] sm:text-[18vw] font-black text-[#A0A0A0] leading-none tracking-tighter opacity-80"
+              style={{ fontFamily: "'Inter', sans-serif" }}
+            >
+              VedaAI
+            </span>
+          </div>
+
+          {/* Bottom Copyright & Legal Links */}
+          <div className="flex flex-col md:flex-row justify-between items-end md:items-center gap-6 relative z-10 pt-4 border-t border-transparent">
+            <div className="text-[#A0A0A0] text-xs font-medium">
+              <p>© 2026 Vedafy Technologies Pvt. Ltd.</p>
+              <p>All rights reserved</p>
+            </div>
+            
+            <div className="flex flex-wrap items-center gap-6 text-[#A0A0A0] text-xs font-medium">
+              <a href="#" className="hover:text-[#1A1A1A] transition-colors">Privacy Policy</a>
+              <a href="#" className="hover:text-[#1A1A1A] transition-colors">Terms & Conditions</a>
+              <a href="#" className="hover:text-[#1A1A1A] transition-colors">Sustainability</a>
+            </div>
+          </div>
+        </div>
       </footer>
     </div>
   );
