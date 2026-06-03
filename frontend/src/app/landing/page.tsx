@@ -109,7 +109,7 @@ export default function LandingPage() {
           <div className="flex flex-col items-center justify-center mb-16">
             <Link
               href="/sign-in"
-              className="group inline-flex items-center gap-2 bg-[#1A1A1A] hover:bg-black text-white font-semibold px-8 py-3.5 rounded-full text-base transition-all shadow-lg hover:shadow-xl"
+              className="group inline-flex items-center gap-2 bg-[#1A1A1A] hover:bg-black text-white font-semibold px-6 py-2.5 rounded-full text-sm transition-all shadow-lg hover:shadow-xl"
             >
               Book a meeting
             </Link>
