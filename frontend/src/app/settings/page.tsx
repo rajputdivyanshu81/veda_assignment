@@ -17,8 +17,8 @@ export default function SettingsPage() {
   useEffect(() => {
     setIsClient(true);
     setFormData({
-      schoolName: localStorage.getItem('vedaai_school_name') || 'Delhi Public School',
-      schoolCity: localStorage.getItem('vedaai_school_city') || 'Bokaro Steel City',
+      schoolName: localStorage.getItem('vedaai_school_name') || '',
+      schoolCity: localStorage.getItem('vedaai_school_city') || '',
       userInitials: localStorage.getItem('vedaai_user_initials') || 'N',
       schoolPic: localStorage.getItem('vedaai_school_pic') || '',
       profilePic: localStorage.getItem('vedaai_profile_pic') || ''

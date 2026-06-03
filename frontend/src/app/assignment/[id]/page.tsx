@@ -25,12 +25,12 @@ export default function AssignmentOutput() {
     fetchAssignmentResult(id);
   });
 
-  const [schoolName, setSchoolName] = useState('Delhi Public School');
-  const [schoolCity, setSchoolCity] = useState('Sector-4, Bokaro');
+  const [schoolName, setSchoolName] = useState('');
+  const [schoolCity, setSchoolCity] = useState('');
 
   useEffect(() => {
-    setSchoolName(localStorage.getItem('vedaai_school_name') || 'Delhi Public School');
-    setSchoolCity(localStorage.getItem('vedaai_school_city') || 'Bokaro Steel City');
+    setSchoolName(localStorage.getItem('vedaai_school_name') || '');
+    setSchoolCity(localStorage.getItem('vedaai_school_city') || '');
   }, []);
 
   useEffect(() => {
@@ -110,7 +110,7 @@ export default function AssignmentOutput() {
           {/* School Header */}
           <div className="text-center border-b border-[#E5E7EB] pb-6 mb-6">
             <h1 className="text-lg md:text-xl font-bold text-[#1A1A1A] break-words">
-              {schoolName}, {schoolCity}
+              {schoolName || '____________________'}, {schoolCity || '____________________'}
             </h1>
             <p className="text-sm text-[#1A1A1A] mt-1 font-medium">
               Subject: {currentAssignment.title}

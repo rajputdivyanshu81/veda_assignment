@@ -24,8 +24,8 @@ const navItems = [
 export default function Sidebar() {
   const pathname = usePathname();
   const [profileData, setProfileData] = useState({
-    schoolName: 'Delhi Public School',
-    schoolCity: 'Bokaro Steel City',
+    schoolName: '',
+    schoolCity: '',
     userInitials: 'N',
     schoolPic: '',
     profilePic: ''
@@ -42,8 +42,8 @@ export default function Sidebar() {
   useEffect(() => {
     const loadProfileData = () => {
       setProfileData({
-        schoolName: localStorage.getItem('vedaai_school_name') || 'Delhi Public School',
-        schoolCity: localStorage.getItem('vedaai_school_city') || 'Bokaro Steel City',
+        schoolName: localStorage.getItem('vedaai_school_name') || '',
+        schoolCity: localStorage.getItem('vedaai_school_city') || '',
         userInitials: localStorage.getItem('vedaai_user_initials') || 'N',
         schoolPic: localStorage.getItem('vedaai_school_pic') || '',
         profilePic: localStorage.getItem('vedaai_profile_pic') || ''
@@ -207,10 +207,10 @@ export default function Sidebar() {
           
           <div className="flex-1 min-w-0 flex flex-col justify-center">
             <p className="text-[14px] font-semibold text-[#1A1A1A] truncate leading-tight tracking-tight mb-0.5">
-              {profileData.schoolName}
+              {profileData.schoolName || 'Edit School Name'}
             </p>
             <p className="text-[13px] text-[#6B7280] truncate leading-tight">
-              {profileData.schoolCity}
+              {profileData.schoolCity || 'Edit School City'}
             </p>
           </div>
         </div>

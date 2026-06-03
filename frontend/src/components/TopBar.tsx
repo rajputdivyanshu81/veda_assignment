@@ -28,8 +28,8 @@ export default function TopBar() {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [profileData, setProfileData] = useState({
-    schoolName: 'Delhi Public School',
-    schoolCity: 'Bokaro Steel City',
+    schoolName: '',
+    schoolCity: '',
     schoolPic: '',
   });
 
@@ -49,8 +49,8 @@ export default function TopBar() {
   useEffect(() => {
     const loadProfileData = () => {
       setProfileData({
-        schoolName: localStorage.getItem('vedaai_school_name') || 'Delhi Public School',
-        schoolCity: localStorage.getItem('vedaai_school_city') || 'Bokaro Steel City',
+        schoolName: localStorage.getItem('vedaai_school_name') || '',
+        schoolCity: localStorage.getItem('vedaai_school_city') || '',
         schoolPic: localStorage.getItem('vedaai_school_pic') || '',
       });
     };
@@ -313,8 +313,8 @@ export default function TopBar() {
                   />
                 </div>
                 <div className="min-w-0">
-                  <p className="text-xs font-bold text-[#1A1A1A] truncate leading-tight">{profileData.schoolName}</p>
-                  <p className="text-[10px] text-gray-500 truncate leading-none mt-1">{profileData.schoolCity}</p>
+                  <p className="text-xs font-bold text-[#1A1A1A] truncate leading-tight">{profileData.schoolName || 'Edit School Name'}</p>
+                  <p className="text-[10px] text-gray-500 truncate leading-none mt-1">{profileData.schoolCity || 'Edit School City'}</p>
                 </div>
               </div>
             </div>
