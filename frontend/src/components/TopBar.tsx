@@ -7,6 +7,7 @@ import {
   Bell,
   ChevronDown,
 } from 'lucide-react';
+import { UserButton } from '@clerk/nextjs';
 
 export default function TopBar() {
   const router = useRouter();
@@ -34,18 +35,8 @@ export default function TopBar() {
         </button>
 
         {/* User avatar & name */}
-        <div className="flex items-center gap-2 cursor-pointer">
-          <div className="w-8 h-8 rounded-full overflow-hidden bg-gray-200">
-            <img
-              src="https://api.dicebear.com/9.x/avataaars/svg?seed=john"
-              alt="John Doe"
-              className="w-full h-full object-cover"
-            />
-          </div>
-          <span className="hidden md:inline text-sm font-medium text-[#1A1A1A]">
-            John Doe
-          </span>
-          <ChevronDown className="w-4 h-4 text-[#6B7280] hidden md:block" />
+        <div className="flex items-center gap-2">
+          <UserButton afterSignOutUrl="/landing" />
         </div>
       </div>
     </header>
