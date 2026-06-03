@@ -30,10 +30,18 @@ export default function AssignmentsPage() {
   const [openMenuId, setOpenMenuId] = useState<string | null>(null);
   const menuRef = useRef<HTMLDivElement>(null);
 
+  const getToken = () => {
+    if (typeof window !== 'undefined') return localStorage.getItem('vedaai_token');
+    return null;
+  };
+
   useEffect(() => {
     async function fetchAssignments() {
+      const token = getToken();
       try {
-        const res = await fetch(`${API_URL}/api/assignments`);
+        const res = await fetch(`${API_URL}/api/assignments`, {
+          headers: token ? { Authorization: `Bearer ${token}` } : {},
+        });
         if (res.ok) {
           const data = await res.json();
           setAssignments(Array.isArray(data) ? data : data.assignments || []);
