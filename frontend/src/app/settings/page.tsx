@@ -30,6 +30,23 @@ export default function SettingsPage() {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>, fieldName: 'schoolPic' | 'profilePic') => {
+    const file = e.target.files?.[0];
+    if (file) {
+      // Limit file size to 1.5MB to prevent LocalStorage quota overflow
+      if (file.size > 1.5 * 1024 * 1024) {
+        alert("Image file size must be less than 1.5MB to fit in settings storage.");
+        return;
+      }
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        const base64String = reader.result as string;
+        setFormData(prev => ({ ...prev, [fieldName]: base64String }));
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
   const handleSave = () => {
     localStorage.setItem('vedaai_school_name', formData.schoolName);
     localStorage.setItem('vedaai_school_city', formData.schoolCity);
@@ -68,48 +85,102 @@ export default function SettingsPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {/* School Logo */}
               <div className="space-y-4">
-                <label className="block text-sm font-semibold text-gray-700">School Logo URL</label>
+                <label className="block text-sm font-semibold text-gray-700">School Logo</label>
                 <div className="flex items-center gap-4">
-                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center shrink-0 overflow-hidden shadow-inner">
+                  <div className="w-16 h-16 rounded-full bg-[#FF9800] overflow-hidden flex items-center justify-center shrink-0 border border-gray-100 shadow-sm">
                     <img
                       src={formData.schoolPic || "https://api.dicebear.com/7.x/shapes/svg?seed=school&backgroundColor=FF9800"}
                       alt="School"
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  <input
-                    type="text"
-                    name="schoolPic"
-                    value={formData.schoolPic}
-                    onChange={handleChange}
-                    placeholder="https://example.com/logo.png"
-                    className="flex-1 rounded-xl border border-gray-200 px-4 py-3 text-sm focus:border-[#E8612D] focus:ring-1 focus:ring-[#E8612D] outline-none transition-colors"
-                  />
+                  <div className="flex-1 flex flex-col gap-2">
+                    <input
+                      type="text"
+                      name="schoolPic"
+                      value={formData.schoolPic.startsWith('data:') ? 'Local Upload' : formData.schoolPic}
+                      onChange={handleChange}
+                      disabled={formData.schoolPic.startsWith('data:')}
+                      placeholder="Paste image URL (https://...)"
+                      className="w-full rounded-xl border border-gray-200 px-4 py-2.5 text-sm focus:border-[#E8612D] focus:ring-1 focus:ring-[#E8612D] outline-none transition-colors disabled:bg-gray-50 disabled:text-gray-500"
+                    />
+                    <div className="flex items-center gap-2.5">
+                      <input
+                        type="file"
+                        id="school-logo-file"
+                        accept="image/*"
+                        className="hidden"
+                        onChange={(e) => handleFileChange(e, 'schoolPic')}
+                      />
+                      <label
+                        htmlFor="school-logo-file"
+                        className="cursor-pointer text-[11px] font-semibold bg-gray-50 hover:bg-gray-100 text-gray-700 px-3 py-1.5 rounded-lg border border-gray-200 transition-all active:scale-95"
+                      >
+                        Upload Local File
+                      </label>
+                      {formData.schoolPic && (
+                        <button
+                          type="button"
+                          onClick={() => setFormData(prev => ({ ...prev, schoolPic: '' }))}
+                          className="text-[11px] text-red-500 font-bold hover:underline"
+                        >
+                          Clear
+                        </button>
+                      )}
+                    </div>
+                  </div>
                 </div>
-                <p className="text-xs text-gray-400">Paste an image URL to replace the default generated shape.</p>
+                <p className="text-xs text-gray-400">Upload a logo file or paste a public logo URL.</p>
               </div>
 
               {/* User Avatar */}
               <div className="space-y-4">
-                <label className="block text-sm font-semibold text-gray-700">Your Avatar URL</label>
+                <label className="block text-sm font-semibold text-gray-700">Your Avatar</label>
                 <div className="flex items-center gap-4">
-                  <div className="w-16 h-16 rounded-full bg-[#242424] flex items-center justify-center shrink-0 overflow-hidden shadow-inner">
+                  <div className="w-16 h-16 rounded-full bg-[#242424] flex items-center justify-center shrink-0 overflow-hidden shadow-sm border border-gray-100">
                     {formData.profilePic ? (
                       <img src={formData.profilePic} alt="User" className="w-full h-full object-cover" />
                     ) : (
                       <span className="text-white text-xl font-bold tracking-wide">{formData.userInitials || 'N'}</span>
                     )}
                   </div>
-                  <input
-                    type="text"
-                    name="profilePic"
-                    value={formData.profilePic}
-                    onChange={handleChange}
-                    placeholder="https://example.com/avatar.png"
-                    className="flex-1 rounded-xl border border-gray-200 px-4 py-3 text-sm focus:border-[#E8612D] focus:ring-1 focus:ring-[#E8612D] outline-none transition-colors"
-                  />
+                  <div className="flex-1 flex flex-col gap-2">
+                    <input
+                      type="text"
+                      name="profilePic"
+                      value={formData.profilePic.startsWith('data:') ? 'Local Upload' : formData.profilePic}
+                      onChange={handleChange}
+                      disabled={formData.profilePic.startsWith('data:')}
+                      placeholder="Paste image URL (https://...)"
+                      className="w-full rounded-xl border border-gray-200 px-4 py-2.5 text-sm focus:border-[#E8612D] focus:ring-1 focus:ring-[#E8612D] outline-none transition-colors disabled:bg-gray-50 disabled:text-gray-500"
+                    />
+                    <div className="flex items-center gap-2.5">
+                      <input
+                        type="file"
+                        id="user-avatar-file"
+                        accept="image/*"
+                        className="hidden"
+                        onChange={(e) => handleFileChange(e, 'profilePic')}
+                      />
+                      <label
+                        htmlFor="user-avatar-file"
+                        className="cursor-pointer text-[11px] font-semibold bg-gray-50 hover:bg-gray-100 text-gray-700 px-3 py-1.5 rounded-lg border border-gray-200 transition-all active:scale-95"
+                      >
+                        Upload Local File
+                      </label>
+                      {formData.profilePic && (
+                        <button
+                          type="button"
+                          onClick={() => setFormData(prev => ({ ...prev, profilePic: '' }))}
+                          className="text-[11px] text-red-500 font-bold hover:underline"
+                        >
+                          Clear
+                        </button>
+                      )}
+                    </div>
+                  </div>
                 </div>
-                <p className="text-xs text-gray-400">Leave blank to use your initials.</p>
+                <p className="text-xs text-gray-400">Upload a profile picture or paste a public avatar URL.</p>
               </div>
             </div>
           </div>
