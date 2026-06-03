@@ -388,6 +388,58 @@ export default function LandingPage() {
         </div>
       </section>
 
+      {/* ═══ FAQ SECTION ═══ */}
+      <section className="py-20 lg:py-32 px-4 bg-[#FDFDFD]">
+        <div className="max-w-3xl mx-auto">
+          <div className="text-center mb-12">
+            <h2
+              className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight mb-4 text-[#1A1A1A]"
+              style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }}
+            >
+              Frequently asked questions
+            </h2>
+            <p className="text-[#505050] text-sm sm:text-base max-w-md mx-auto leading-relaxed">
+              Start free, go pro when you're ready! no limits, no pressure.
+            </p>
+          </div>
+
+          <div className="space-y-3">
+            {[
+              {
+                q: 'What is the return on investment (ROI) for a school using VedaAI?',
+                a: 'VedaAI significantly reduces the time teachers spend on grading and administrative tasks, allowing them to focus more on student engagement. This leads to better academic outcomes and increased institutional efficiency.'
+              },
+              {
+                q: 'Is VedaAI replacing teachers?',
+                a: 'Not at all. VedaAI is an empowering tool designed to assist teachers, not replace them. It handles repetitive tasks like grading so teachers can dedicate more time to personalized instruction.'
+              },
+              {
+                q: 'How accurate is AI-based grading?',
+                a: 'Our AI engine is highly accurate and trained on extensive educational datasets. It evaluates answers based on detailed rubrics and always allows teachers to review and override any scores before finalization.'
+              },
+              {
+                q: 'Will teachers find it difficult to use?',
+                a: 'VedaAI is designed with simplicity in mind. Our intuitive dashboard makes it incredibly easy for any teacher to create assessments and review grades with minimal training.'
+              },
+              {
+                q: 'What types of assessments can be evaluated?',
+                a: 'VedaAI supports a wide variety of formats including multiple-choice, short-answer, long essays, and even handwritten diagrams or mathematical equations.'
+              }
+            ].map((faq, idx) => (
+              <details key={idx} className="group bg-[#F5F5F5] border border-gray-100 rounded-2xl cursor-pointer">
+                <summary className="flex items-center justify-between p-5 sm:p-6 text-sm sm:text-base font-medium text-[#1A1A1A] list-none select-none">
+                  {faq.q}
+                  <span className="text-xl leading-none font-light group-open:rotate-45 transition-transform duration-200">+</span>
+                </summary>
+                <div className="px-5 sm:px-6 pb-6 text-sm text-[#505050] leading-relaxed">
+                  {faq.a}
+                </div>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ═══ TRUSTED BY SECTION ═══ */}
       <section className="py-12 border-t border-gray-100 bg-[#FDFDFD]">
         <div className="max-w-6xl mx-auto px-4 text-center">
