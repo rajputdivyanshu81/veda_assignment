@@ -36,7 +36,7 @@ export default function TopBar() {
 
         {/* User avatar & name */}
         <div className="flex items-center gap-2">
-          <UserButton afterSignOutUrl="/landing" />
+          <UserButton />
         </div>
       </div>
     </header>
